@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+:root {
+  --ocean-950: #061018;
+  --ocean-900: #0a1c2c;
+  --ocean-800: #123048;
+  --ocean-700: #1a4563;
+  --sea-500: #1f8a7e;
+  --sea-400: #2aa89a;
+  --sea-300: #5ec4b8;
+  --mist-50: #f3f7f9;
+  --mist-100: #e6eef3;
+  --mist-200: #d0dde6;
+  --sand-100: #f0ebe3;
+  --ink: #102033;
+  --ink-muted: #5a6b7a;
+  --foam: #f8fbfc;
+  --accent: #c45c26;
+  --background: var(--foam);
+  --foreground: var(--ink);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-ocean-950: var(--ocean-950);
+  --color-ocean-900: var(--ocean-900);
+  --color-ocean-800: var(--ocean-800);
+  --color-ocean-700: var(--ocean-700);
+  --color-sea-500: var(--sea-500);
+  --color-sea-400: var(--sea-400);
+  --color-sea-300: var(--sea-300);
+  --color-mist-50: var(--mist-50);
+  --color-mist-100: var(--mist-100);
+  --color-mist-200: var(--mist-200);
+  --color-sand-100: var(--sand-100);
+  --color-ink: var(--ink);
+  --color-ink-muted: var(--ink-muted);
+  --color-foam: var(--foam);
+  --color-accent: var(--accent);
+  --font-sans: var(--font-body-family), var(--font-body-latin), "Noto Sans SC", sans-serif;
+  --font-display: var(--font-display-family), "Noto Serif SC", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body-family), var(--font-body-latin), "Noto Sans SC", sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-display-family), "Noto Serif SC", serif;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--sea-400) 35%, white);
+  color: var(--ocean-950);
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(12px) translateY(-6px);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wave-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-drift {
+  animation: drift 9s ease-in-out infinite;
+}
+
+.animate-rise {
+  animation: rise 0.8s ease-out both;
+}
+
+.animate-rise-delay-1 {
+  animation: rise 0.8s ease-out 0.12s both;
+}
+
+.animate-rise-delay-2 {
+  animation: rise 0.8s ease-out 0.24s both;
+}
+
+.animate-rise-delay-3 {
+  animation: rise 0.8s ease-out 0.36s both;
+}
+
+.hero-atmosphere {
+  background:
+    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(42, 168, 154, 0.22), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 15% 80%, rgba(26, 69, 99, 0.45), transparent 50%),
+    linear-gradient(160deg, #061018 0%, #0a1c2c 42%, #123048 100%);
+  background-size: 120% 120%, 100% 100%, 100% 100%;
+  animation: wave-shift 18s ease-in-out infinite alternate;
+}
+
+.wave-divider {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' fill='none'%3E%3Cpath d='M0 32c120 24 240-24 360-16s240 40 360 32 240-40 360-32 240 40 360 16v32H0V32z' fill='%23f8fbfc'/%3E%3C/svg%3E")
+    center bottom / 100% 100% no-repeat;
+}
+
+.section-wash {
+  background:
+    linear-gradient(180deg, var(--foam) 0%, var(--mist-50) 48%, var(--foam) 100%);
+}
+
+.soft-panel {
+  background: color-mix(in srgb, white 82%, var(--mist-100));
+  border: 1px solid color-mix(in srgb, var(--mist-200) 70%, transparent);
+}
