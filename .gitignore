@@ -19,6 +19,7 @@
 
 # production
 /build
+/haiyun-site.zip
 
 # misc
 .DS_Store

@@ -8,6 +8,8 @@ import { navItems, site } from "@/lib/site";
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/10 bg-ocean-950/90 text-foam backdrop-blur-md">
@@ -23,12 +25,12 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           {navItems.map((item) => {
-            const active = pathname === item.href;
+            const active = isActive(item.href);
             return (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`rounded-md px-2.5 py-1.5 text-sm transition ${
+                className={`rounded-md px-2 py-1.5 text-sm transition ${
                   active
                     ? "bg-white/10 text-sea-300"
                     : "text-foam/80 hover:bg-white/5 hover:text-foam"
@@ -45,16 +47,16 @@ export function Header() {
             href="/contact"
             className="hidden rounded-md bg-sea-500 px-3 py-1.5 text-sm font-medium text-white transition hover:bg-sea-400 sm:inline-flex"
           >
-            立即咨询
+            立即諮詢
           </Link>
           <button
             type="button"
             className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-white/15 text-foam lg:hidden"
             aria-expanded={open}
-            aria-label="打开导航菜单"
+            aria-label="打開導航菜單"
             onClick={() => setOpen((v) => !v)}
           >
-            <span className="sr-only">菜单</span>
+            <span className="sr-only">菜單</span>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden>
               {open ? (
                 <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="1.8" />
@@ -75,7 +77,7 @@ export function Header() {
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-md px-3 py-2.5 text-sm ${
-                  pathname === item.href ? "bg-white/10 text-sea-300" : "text-foam/90"
+                  isActive(item.href) ? "bg-white/10 text-sea-300" : "text-foam/90"
                 }`}
               >
                 {item.label}
@@ -86,7 +88,7 @@ export function Header() {
               onClick={() => setOpen(false)}
               className="mt-2 rounded-md bg-sea-500 px-3 py-2.5 text-center text-sm font-medium text-white"
             >
-              运费估算
+              運費估算
             </Link>
           </nav>
         </div>

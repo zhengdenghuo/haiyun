@@ -38,8 +38,8 @@
   --color-ink-muted: var(--ink-muted);
   --color-foam: var(--foam);
   --color-accent: var(--accent);
-  --font-sans: var(--font-body-family), var(--font-body-latin), "Noto Sans SC", sans-serif;
-  --font-display: var(--font-display-family), "Noto Serif SC", serif;
+  --font-sans: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", "Segoe UI", sans-serif;
+  --font-display: "Songti TC", "Source Han Serif TC", "Noto Serif TC", "PMingLiU", serif;
 }
 
 html {
@@ -49,11 +49,11 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-body-family), var(--font-body-latin), "Noto Sans SC", sans-serif;
+  font-family: var(--font-sans);
 }
 
 .font-display {
-  font-family: var(--font-display-family), "Noto Serif SC", serif;
+  font-family: var(--font-display);
 }
 
 ::selection {
@@ -121,7 +121,7 @@ body {
 }
 
 .wave-divider {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' fill='none'%3E%3Cpath d='M0 32c120 24 240-24 360-16s240 40 360 32 240-40 360-32 240 40 360 16v32H0V32z' fill='%23f8fbfc'/%3E%3C/svg%3E")
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none' fill='none'%3E%3Cpath d='M0 32c120 24 240-24 360-16s240 40 360 32 240-40 360-32 240 40 360 16v32H0V32z' fill='%23f8fbfc'/%3E%3C/svg%3E")
     center bottom / 100% 100% no-repeat;
 }
 

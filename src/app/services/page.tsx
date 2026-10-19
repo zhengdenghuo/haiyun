@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
 import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 import { services } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "集运服务",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/services",
+  title: "台灣集運服務｜海運・海快包稅・空運專線",
+  description:
+    "大陸寄台灣海運專線、海快包稅、空運普貨與港澳、東南亞線路，提供合箱加固、驗貨拍照、分箱等倉內增值服務，依貨物屬性推薦最合適的集運方案。",
+});
 
 export default function ServicesPage() {
   return (
     <>
       <PageHero
         eyebrow="Services"
-        title="集运服务介绍"
-        description="壹家海运提供合箱集运、海运空运专线与增值仓内服务。按目的地与货性选择合适通道，减少拆单烦恼。"
+        title="集運服務介紹"
+        description="鯨魚海運提供合箱集運、海運空運專線與增值倉內服務。按目的地與貨性選擇合適通道，減少拆單煩惱。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -45,18 +49,18 @@ export default function ServicesPage() {
 
       <section className="bg-mist-50">
         <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-          <h2 className="font-display text-3xl text-ocean-900">仓内增值服务</h2>
+          <h2 className="font-display text-3xl text-ocean-900">倉內增值服務</h2>
           <p className="mt-3 max-w-2xl text-ink-muted">
-            在申请合箱时可勾选下列服务，费用计入运费账单，明细可在会员中心核对。
+            在申請合箱時可告知客服選擇下列服務，費用計入運費賬單，明細可向客服索取核對。
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              ["加固与防撞", "气泡柱、护角、缠膜，适合陶瓷、灯具、瓶装品。"],
-              ["验货拍照", "开箱拍摄商品外观与配件清单，降低纠纷成本。"],
-              ["分箱 / 合箱", "按收件地址或品类重新分装，控制单票体积。"],
-              ["去除发票吊牌", "减少清关敏感信息，需保留可备注说明。"],
-              ["代取件上门", "珠三角指定区域可预约上门取件（需提前一天）。"],
-              ["企业月结", "稳定出货量的店铺可申请对公账户与月结账单。"],
+              ["加固與防撞", "氣泡柱、護角、纏膜，適合陶瓷、燈具、瓶裝品。"],
+              ["驗貨拍照", "開箱拍攝商品外觀與配件清單，降低糾紛成本。"],
+              ["分箱 / 合箱", "按收件地址或品類重新分裝，控制單票體積。"],
+              ["去除發票吊牌", "減少清關敏感信息，需保留可備註說明。"],
+              ["代取件上門", "珠三角指定區域可預約上門取件（需提前一天）。"],
+              ["企業月結", "穩定出貨量的店鋪可申請對公賬戶與月結賬單。"],
             ].map(([title, desc]) => (
               <div key={title}>
                 <h3 className="text-lg font-medium text-ocean-900">{title}</h3>
@@ -68,8 +72,8 @@ export default function ServicesPage() {
       </section>
 
       <CtaBanner
-        title="不确定该选哪条线路？"
-        description="告诉我们货物品类、大致重量与期望时效，客服会给出推荐方案。"
+        title="不確定該選哪條線路？"
+        description="告訴我們貨物品類、大致重量與期望時效，客服會給出推薦方案。"
       />
     </>
   );

@@ -2,19 +2,23 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 import { processSteps } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "集运流程",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/process",
+  title: "集運流程｜大陸寄台灣六步驟",
+  description:
+    "大陸集運到台灣只要六步：與客服溝通、購物寄倉、包裹預報、合箱打包、付款發運、簽收確認。第一次使用淘寶、拼多多集運也能輕鬆上手。",
+});
 
 export default function ProcessPage() {
   return (
     <>
       <PageHero
         eyebrow="Process"
-        title="集运流程"
-        description="从注册到签收共六步。建议首次使用时先完成预报与合箱演示，熟悉体积重计费规则。"
+        title="集運流程"
+        description="從溝通到簽收共六步。首次使用建議先向客服確認線路，並了解體積重計費規則。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -33,7 +37,7 @@ export default function ProcessPage() {
                 <p className="mt-2 max-w-2xl text-ink-muted leading-relaxed">{step.desc}</p>
                 {index === 0 ? (
                   <p className="mt-3 text-sm text-sea-500">
-                    提示：注册后请尽快在个人中心核对仓库地址是否含会员号。
+                    提示：取得倉庫地址後，請向客服確認收件人中是否已含您的專屬編號。
                   </p>
                 ) : null}
               </div>
@@ -44,20 +48,20 @@ export default function ProcessPage() {
 
       <section className="bg-mist-50">
         <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-          <h2 className="font-display text-3xl text-ocean-900">常见卡点与处理</h2>
+          <h2 className="font-display text-3xl text-ocean-900">常見卡點與處理</h2>
           <div className="mt-8 grid gap-8 md:grid-cols-3">
             {[
               [
-                "包裹长时间未入库",
-                "核对快递是否已签收、收件人是否含会员号；仍无记录可提交运单号由客服协查。",
+                "包裹長時間未入庫",
+                "核對快遞是否已簽收、收件人是否含專屬編號；仍無記錄可提交運單號由客服協查。",
               ],
               [
-                "体积重高于预期",
-                "鞋盒、灯具等空隙大的货物建议去盒或加固压缩；可先用运费估算工具粗算。",
+                "體積重高於預期",
+                "鞋盒、燈具等空隙大的貨物建議去盒或加固壓縮；可先用運費估算工具粗算。",
               ],
               [
-                "清关查验",
-                "如实申报品名与数量；包税线路由专线处理常规税费，特殊品类以客服通知为准。",
+                "清關查驗",
+                "如實申報品名、數量與貨值；包稅線路依實際貨值申報，稅費由我們代為繳納，特殊品類以客服通知為準。",
               ],
             ].map(([title, body]) => (
               <article key={title}>
@@ -67,13 +71,13 @@ export default function ProcessPage() {
             ))}
           </div>
           <p className="mt-8 text-sm text-ink-muted">
-            更多细节见{" "}
+            更多細節見{" "}
             <Link href="/guide" className="text-sea-500 hover:underline">
-              集运须知
+              集運須知
             </Link>{" "}
-            与{" "}
+            與{" "}
             <Link href="/pricing" className="text-sea-500 hover:underline">
-              收费标准
+              收費標準
             </Link>
             。
           </p>
@@ -81,10 +85,10 @@ export default function ProcessPage() {
       </section>
 
       <CtaBanner
-        title="按流程走，第一票也能顺畅"
-        description="先获取仓库地址，或直接咨询客服确认货物是否可运。"
+        title="按流程走，第一票也能順暢"
+        description="先獲取倉庫地址，或直接諮詢客服確認貨物是否可運。"
         primaryHref="/warehouse"
-        primaryLabel="查看收货仓库"
+        primaryLabel="查看收貨倉庫"
       />
     </>
   );

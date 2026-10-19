@@ -1,29 +1,33 @@
 import type { Metadata } from "next";
 import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 import { warehouseInfo } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "收货仓库",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/warehouse",
+  title: "東莞集運收貨倉庫地址",
+  description:
+    "鯨魚海運東莞虎門收貨倉地址與填寫方式。淘寶、天貓、京東、拼多多下單時填寫倉庫地址並註明專屬編號，包裹入庫後即可安排合箱集運到台灣。",
+});
 
 export default function WarehousePage() {
   const rows = [
     ["收件人", warehouseInfo.receiverHint],
     ["省份", warehouseInfo.province],
     ["城市", warehouseInfo.city],
-    ["区镇", warehouseInfo.district],
-    ["详细地址", warehouseInfo.detail],
-    ["电话", warehouseInfo.phone],
-    ["邮编", warehouseInfo.postcode],
+    ["區鎮", warehouseInfo.district],
+    ["詳細地址", warehouseInfo.detail],
+    ["電話", warehouseInfo.phone],
+    ["郵編", warehouseInfo.postcode],
   ];
 
   return (
     <>
       <PageHero
         eyebrow="Warehouse"
-        title="收货仓库"
-        description="将电商平台的收件信息填写为您的壹家会员仓地址。下列为示例仓信息，上线后请替换为真实地址。"
+        title="收貨倉庫"
+        description="將電商平台的收件信息填寫為鯨魚海運提供的倉庫地址，並在收件人後註明您的專屬編號。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -44,7 +48,7 @@ export default function WarehousePage() {
           </div>
 
           <aside>
-            <h2 className="font-display text-2xl text-ocean-900">填写注意</h2>
+            <h2 className="font-display text-2xl text-ocean-900">填寫注意</h2>
             <ul className="mt-5 space-y-4">
               {warehouseInfo.tips.map((tip) => (
                 <li key={tip} className="text-sm leading-relaxed text-ink-muted">
@@ -57,12 +61,12 @@ export default function WarehousePage() {
       </section>
 
       <CtaBanner
-        title="地址填好了，下一步去预报"
-        description="包裹寄出后请登录会员中心提交快递单号，加快入库匹配。"
+        title="地址填好了，下一步去預報"
+        description="包裹寄出後請將快遞單號發給客服登記，加快入庫匹配。"
         primaryHref="/process"
-        primaryLabel="查看集运流程"
+        primaryLabel="查看集運流程"
         secondaryHref="/contact"
-        secondaryLabel="联系客服"
+        secondaryLabel="聯繫客服"
       />
     </>
   );

@@ -1,6 +1,6 @@
-# 壹家海运（Yijia Ocean Shipping）
+# 鲸鱼海运（Whale Ocean Shipping）
 
-跨境集运 / 海运专线营销官网演示项目。品牌、文案与视觉均为原创，面向「壹家海运」占位内容，便于后续替换真实价格、地址与客服渠道。
+跨境集运 / 海运专线营销官网演示项目。品牌、文案与视觉均为原创，面向「鲸鱼海运」占位内容，便于后续替换真实价格、地址与客服渠道。
 
 ## 技术栈
 
@@ -29,5 +29,6 @@ npm run lint    # ESLint
 
 ## 说明
 
-- 联系表单与运费估算为前端演示，不会真实提交或下单。
+- 联系表单由 `public/contact.php` 通过 QQ 邮箱 SMTP 发送留言，服务器需支持 PHP（含 openssl 扩展）。`npm run build` 后会根据 `.env.local` 的 `SMTP_*` 配置自动生成 `out/contact-config.php`；本地 `npm run dev` 不运行 PHP，表单无法发信。
+- 运费估算为前端演示，不会真实下单。
 - 仓库地址、电话、ICP 等为占位信息。

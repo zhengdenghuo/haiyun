@@ -9,7 +9,7 @@ export function Footer() {
           <p className="font-display text-2xl tracking-wide">{site.name}</p>
           <p className="mt-2 text-sm text-foam/65">{site.tagline}</p>
           <p className="mt-4 text-sm text-foam/55">
-            咨询热线{" "}
+            諮詢熱線{" "}
             <a href={`tel:${site.phone}`} className="text-sea-300 hover:underline">
               {site.phone}
             </a>
@@ -17,8 +17,8 @@ export function Footer() {
           <p className="mt-1 text-xs text-foam/45">{site.hours}</p>
         </div>
 
-        <FooterColumn title="集运服务" links={footerLinks.services} />
-        <FooterColumn title="帮助支持" links={footerLinks.support} />
+        <FooterColumn title="集運服務" links={footerLinks.services} />
+        <FooterColumn title="幫助支持" links={footerLinks.support} />
         <FooterColumn title="公司信息" links={footerLinks.company} />
       </div>
 
@@ -27,7 +27,16 @@ export function Footer() {
           <p>
             © 2026 {site.name} · {site.englishName}
           </p>
-          <p>{site.icp}</p>
+          {site.icp ? (
+            <a
+              href="https://beian.miit.gov.cn"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-foam/70"
+            >
+              {site.icp}
+            </a>
+          ) : null}
         </div>
       </div>
     </footer>

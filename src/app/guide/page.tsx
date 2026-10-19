@@ -1,19 +1,23 @@
 import type { Metadata } from "next";
 import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 import { guideSections } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "集运须知",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/guide",
+  title: "集運須知｜違禁品、清關與打包說明",
+  description:
+    "集運下單前準備、打包建議、清關與稅費說明，以及違禁品與限制品清單（鋰電池、液體、粉末等），避免包裹無法出庫或延誤清關。",
+});
 
 export default function GuidePage() {
   return (
     <>
       <PageHero
         eyebrow="Guide"
-        title="集运须知"
-        description="下单、打包、清关与违禁说明集中在此。首次集运建议通读违禁品一节，避免无法出库。"
+        title="集運須知"
+        description="下單、打包、清關與違禁說明集中在此。首次集運建議通讀違禁品一節，避免無法出庫。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -46,8 +50,8 @@ export default function GuidePage() {
       </section>
 
       <CtaBanner
-        title="仍有不确定的品类？"
-        description="把商品链接或成分说明发给客服，我们会在工作时间内回复是否可运。"
+        title="仍有不確定的品類？"
+        description="把商品鏈接或成分說明發給客服，我們會在工作時間內回覆是否可運。"
       />
     </>
   );

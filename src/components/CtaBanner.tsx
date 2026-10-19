@@ -13,9 +13,9 @@ export function CtaBanner({
   title,
   description,
   primaryHref = "/contact",
-  primaryLabel = "联系客服",
+  primaryLabel = "聯繫客服",
   secondaryHref = "/estimate",
-  secondaryLabel = "估算运费",
+  secondaryLabel = "估算運費",
 }: CtaBannerProps) {
   return (
     <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">

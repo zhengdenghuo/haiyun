@@ -1,44 +1,84 @@
 import type { Metadata } from "next";
-import { Noto_Sans_SC, Noto_Serif_SC, Plus_Jakarta_Sans } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
-import { site } from "@/lib/site";
+import { ogImage } from "@/lib/seo";
+import { site, warehouseInfo } from "@/lib/site";
 import "./globals.css";
 
-const display = Noto_Serif_SC({
-  variable: "--font-display-family",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-});
-
-const bodySans = Plus_Jakarta_Sans({
-  variable: "--font-body-latin",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const bodySc = Noto_Sans_SC({
-  variable: "--font-body-family",
-  subsets: ["latin"],
-  weight: ["400", "500", "700"],
-});
-
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: `${site.name}｜跨境集运与海运专线`,
+    default: `${site.name}｜台灣集運・大陸寄台灣海運專線`,
     template: `%s｜${site.name}`,
   },
   description:
-    "壹家海运提供大陆至台湾、港澳及东南亚的集运合箱、海运空运专线与仓配服务。流程透明、计费清晰、客服跟进。",
+    "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快包稅與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
+  applicationName: site.name,
+  openGraph: {
+    siteName: site.name,
+    locale: "zh_TW",
+    type: "website",
+    images: [ogImage],
+  },
+  twitter: { card: "summary_large_image", images: [ogImage.url] },
+  robots: { index: true, follow: true },
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
+};
+
+const websiteJsonLd = {
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  name: site.name,
+  alternateName: site.englishName,
+  url: `${site.url}/`,
+  inLanguage: "zh-TW",
+  publisher: { "@id": `${site.url}/#business` },
+};
+
+const businessJsonLd = {
+  "@type": "LocalBusiness",
+  "@id": `${site.url}/#business`,
+  name: site.name,
+  alternateName: site.englishName,
+  url: `${site.url}/`,
+  logo: `${site.url}/icon.png`,
+  image: `${site.url}${ogImage.url}`,
+  description: "大陸寄台灣、港澳及東南亞的跨境集運與海運專線服務。",
+  telephone: `+86-${site.phone}`,
+  email: site.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${warehouseInfo.district}${warehouseInfo.detail}`,
+    addressLocality: warehouseInfo.city,
+    addressRegion: warehouseInfo.province,
+    postalCode: warehouseInfo.postcode,
+    addressCountry: "CN",
+  },
+  areaServed: ["TW", "HK", "MO", "SG", "MY"],
+  openingHours: "Mo-Fr 09:00-21:00",
+  sameAs: [site.line],
+};
+
+const siteJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [websiteJsonLd, businessJsonLd],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="zh-CN"
-      className={`${display.variable} ${bodySans.variable} ${bodySc.variable} h-full antialiased`}
+      lang="zh-TW"
+      className="h-full antialiased"
     >
       <body className="flex min-h-full flex-col font-sans text-ink">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

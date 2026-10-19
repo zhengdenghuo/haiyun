@@ -3,9 +3,9 @@
 import { useMemo, useState } from "react";
 
 const lanes = [
-  { id: "sea", label: "台湾海运普货", perKg: 18, perCbmFactor: 168 },
-  { id: "sea-fast", label: "台湾海快包税", perKg: 28, perCbmFactor: 210 },
-  { id: "air", label: "台湾空运普货", perKg: 46, perCbmFactor: 0 },
+  { id: "sea", label: "台灣海運普貨", perKg: 2.5, perCbmFactor: 168 },
+  { id: "sea-fast", label: "台灣海快包稅", perKg: 7.5, perCbmFactor: 210 },
+  { id: "air", label: "台灣空運普貨", perKg: 21, perCbmFactor: 0 },
 ] as const;
 
 export function EstimateTool() {
@@ -34,14 +34,14 @@ export function EstimateTool() {
 
   return (
     <div className="soft-panel rounded-2xl p-6 md:p-8">
-      <h2 className="font-display text-2xl text-ocean-900">运费估算</h2>
+      <h2 className="font-display text-2xl text-ocean-900">運費估算</h2>
       <p className="mt-2 text-sm text-ink-muted">
-        演示计算器，按「实重与体积重取大」粗算，最终以仓库测量为准。
+        按「實重與體積重取大」粗算，最終以倉庫測量為準。
       </p>
 
       <div className="mt-6 grid gap-4 md:grid-cols-2">
         <label className="block md:col-span-2">
-          <span className="mb-1.5 block text-sm text-ink-muted">线路</span>
+          <span className="mb-1.5 block text-sm text-ink-muted">線路</span>
           <select
             value={laneId}
             onChange={(e) => setLaneId(e.target.value as typeof laneId)}
@@ -55,15 +55,15 @@ export function EstimateTool() {
           </select>
         </label>
         <NumberField label="重量 (kg)" value={weight} onChange={setWeight} />
-        <NumberField label="长 (cm)" value={length} onChange={setLength} />
-        <NumberField label="宽 (cm)" value={width} onChange={setWidth} />
+        <NumberField label="長 (cm)" value={length} onChange={setLength} />
+        <NumberField label="寬 (cm)" value={width} onChange={setWidth} />
         <NumberField label="高 (cm)" value={height} onChange={setHeight} />
       </div>
 
       <div className="mt-6 grid gap-3 rounded-xl bg-ocean-900 p-5 text-foam sm:grid-cols-3">
-        <Stat label="体积重" value={`${result.volWeight} kg`} />
-        <Stat label="计费重" value={`${result.billable} kg`} />
-        <Stat label="估算运费" value={`¥ ${result.estimate} 起`} highlight />
+        <Stat label="體積重" value={`${result.volWeight} kg`} />
+        <Stat label="計費重" value={`${result.billable} kg`} />
+        <Stat label="估算運費" value={`約 ${result.estimate} 元`} highlight />
       </div>
     </div>
   );

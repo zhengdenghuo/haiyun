@@ -1,30 +1,31 @@
 import type { Metadata } from "next";
 import { CtaBanner } from "@/components/CtaBanner";
 import { PageHero } from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 import { aboutStats, promises, site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "关于壹家",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/about",
+  title: "關於鯨魚海運｜東莞虎門台灣集運倉",
+  description:
+    "鯨魚海運紮根珠三角倉配網絡，專注大陸至台灣、港澳及東南亞的跨境集運，強調計費透明、軌跡可查與專屬客服跟進。",
+});
 
 export default function AboutPage() {
   return (
     <>
       <PageHero
         eyebrow="About"
-        title={`关于${site.name}`}
-        description="我们相信跨境物流不必神秘：地址清晰、费用可预期、异常有人跟。壹家海运把仓配与干线串成一条可理解的服务。"
+        title={`關於${site.name}`}
+        description="我們相信跨境物流不必神秘：地址清晰、費用可預期、異常有人跟。鯨魚海運把倉配與幹線串成一條可理解的服務。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
           <div>
-            <h2 className="font-display text-3xl text-ocean-900">品牌简介</h2>
+            <h2 className="font-display text-3xl text-ocean-900">品牌簡介</h2>
             <p className="mt-4 leading-relaxed text-ink-muted">
-              {site.name}（{site.englishName}）面向个人买家、留学生家庭与小微跨境店铺，提供大陆收货、合箱加固、海运空运专线及目的地派送。团队深耕珠三角港口与仓配协同，强调「小票也能被认真对待」。
-            </p>
-            <p className="mt-4 leading-relaxed text-ink-muted">
-              本站文案与数据均为演示占位，便于后续替换为真实企业介绍、资质与媒体报道。
+              {site.name}（{site.englishName}）面向個人買家、留學生家庭與小微跨境店鋪，提供大陸收貨、合箱加固、海運空運專線及目的地派送。團隊深耕珠三角港口與倉配協同，強調「小票也能被認真對待」。
             </p>
           </div>
           <dl className="grid grid-cols-2 gap-4">
@@ -40,7 +41,7 @@ export default function AboutPage() {
 
       <section id="promise" className="scroll-mt-24 bg-mist-50">
         <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-          <h2 className="font-display text-3xl text-ocean-900">服务承诺</h2>
+          <h2 className="font-display text-3xl text-ocean-900">服務承諾</h2>
           <div className="mt-8 grid gap-8 sm:grid-cols-2">
             {promises.map((item) => (
               <article key={item.title}>
@@ -53,10 +54,10 @@ export default function AboutPage() {
       </section>
 
       <CtaBanner
-        title="想了解合作或企业月结？"
-        description="留下联系方式与大致月出货量，商务同事会与您对接。"
+        title="想了解合作或企業月結？"
+        description="留下聯繫方式與大致月出貨量，商務同事會與您對接。"
         primaryHref="/contact"
-        primaryLabel="商务咨询"
+        primaryLabel="商務諮詢"
       />
     </>
   );

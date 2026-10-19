@@ -1,19 +1,24 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { ContactForm } from "@/components/ContactForm";
 import { PageHero } from "@/components/PageHero";
+import { pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "联系我们",
-};
+export const metadata: Metadata = pageMetadata({
+  path: "/contact",
+  title: "聯繫我們｜集運客服諮詢",
+  description:
+    "聯繫鯨魚海運客服：電話、微信、LINE 與電子郵件，諮詢台灣集運線路、報價或包裹異常，也可直接線上留言。",
+});
 
 export default function ContactPage() {
   return (
     <>
       <PageHero
         eyebrow="Contact"
-        title="联系我们"
-        description="咨询线路、报价或异常件跟进，欢迎通过电话、即时通讯或下方表单留言。"
+        title="聯繫我們"
+        description="諮詢線路、報價或異常件跟進，歡迎通過電話、即時通訊或下方表單留言。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -21,16 +26,30 @@ export default function ContactPage() {
           <div>
             <h2 className="font-display text-2xl text-ocean-900">客服渠道</h2>
             <ul className="mt-6 space-y-5 text-sm">
-              <Info label="全国咨询热线" value={site.phone} href={`tel:${site.phone}`} />
-              <Info label="服务时间" value={site.hours} />
-              <Info label="邮箱" value={site.email} href={`mailto:${site.email}`} />
+              <Info label="全國諮詢熱線" value={site.phone} href={`tel:${site.phone}`} />
+              <Info label="服務時間" value={site.hours} />
+              <Info label="郵箱" value={site.email} href={`mailto:${site.email}`} />
               <Info label="微信客服" value={site.wechat} />
-              <Info label="LINE" value={site.line} />
-              <Info label="仓库地址" value={site.address} />
+              <li className="border-b border-mist-200 pb-4">
+                <p className="text-ink-muted">LINE</p>
+                <a
+                  href={site.line}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-1 inline-block font-medium text-ocean-900 hover:text-sea-500"
+                >
+                  點擊加 LINE 好友
+                </a>
+                <Image
+                  src={site.lineQr}
+                  alt="LINE 客服二維碼"
+                  width={160}
+                  height={160}
+                  className="mt-3 rounded-md border border-mist-200 bg-white p-2"
+                />
+              </li>
+              <Info label="倉庫地址" value={site.address} />
             </ul>
-            <p className="mt-8 text-xs leading-relaxed text-ink-muted">
-              以上均为占位信息，便于演示站内结构。正式上线前请替换为真实号码与社交账号。
-            </p>
           </div>
           <ContactForm />
         </div>
