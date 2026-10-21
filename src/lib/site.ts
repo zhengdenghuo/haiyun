@@ -58,7 +58,7 @@ export const services = [
   {
     title: "海快精選線路",
     summary: "兼顧海運成本與較快時效，適合節慶備貨與店鋪補貨。",
-    points: ["節點透明可查", "包稅方案可選", "支持拍照驗貨"],
+    points: ["節點透明可查", "按半拋計費", "支持拍照驗貨"],
   },
   {
     title: "空運普貨通道",
@@ -107,34 +107,34 @@ export const processSteps = [
 
 export const pricingRows = [
   {
-    lane: "台灣海運 · 普貨",
-    unit: "低至 2.5 元 / kg",
-    volume: "依材積計，以客服報價為準",
-    eta: "約 7–12 工作日",
-    note: "含基礎合箱；偏遠地區另計",
+    lane: "台灣海運 · 家具",
+    unit: "¥4.5 / kg 起",
+    volume: "¥25 / 材 起",
+    eta: "約 10–12 工作日",
+    note: "按重量與材積較高者計費；含基礎合箱，偏遠地區另計",
   },
   {
-    lane: "台灣海快 · 包稅",
-    unit: "低至 7.5 元 / kg",
-    volume: "依材積計，以客服報價為準",
-    eta: "約 5–8 工作日",
-    note: "依實際貨值如實申報，稅費代繳並計入報價",
+    lane: "台灣海快（不包稅）",
+    unit: "¥10 / kg 起",
+    volume: "按半拋計算",
+    eta: "約 3–6 工作日",
+    note: "不含稅費，如需繳稅由收件人依台灣海關規定繳納",
   },
   {
     lane: "台灣空運 · 普貨",
-    unit: "低至 21 元 / kg",
-    volume: "按實重計費為主",
+    unit: "¥25 / kg 起",
+    volume: "按半拋計算",
     eta: "約 2–4 工作日",
     note: "輕小件更划算；特貨需審核",
   },
-  {
-    lane: "港澳專線",
-    unit: "¥22 / kg 起",
-    volume: "¥72 / 材 起",
-    eta: "約 3–6 工作日",
-    note: "企業件可申請月結",
-  },
 ];
+
+export const CM3_PER_CAI = 28317;
+export const VOLUME_DIVISOR = 6000;
+
+export function halfVolumeWeight(actualKg: number, volumeKg: number) {
+  return volumeKg > actualKg ? actualKg + (volumeKg - actualKg) / 2 : actualKg;
+}
 
 export const addOnFees = [
   { name: "加固包裝", fee: "¥8 / 件起" },
@@ -184,7 +184,7 @@ export const guideSections = [
     id: "customs",
     title: "清關與稅費",
     items: [
-      "包稅線路依實際品名與貨值如實申報，稅費由我們代為向海關繳納並計入報價；非包稅線路如需繳稅，由收件人依目的地規定繳納。",
+      "海快線路不包稅，如需繳稅由收件人依台灣海關規定繳納；所有貨物皆依實際品名與貨值如實申報。",
       "申報品名、數量與貨值請如實提供，避免延誤清關。",
       "我們不提供低報貨值、拆單規避稅費或借用他人名義申報等服務，以免收件人承擔法律責任。",
       "同一收件人短期內大量同類商品可能觸發查驗，請合理規劃。",
@@ -223,6 +223,6 @@ export const promises = [
   },
   {
     title: "透明計費",
-    desc: "體積重與實重取大值規則公開，賬單明細可向客服索取核對。",
+    desc: "材積與半拋計費規則公開，賬單明細可向客服索取核對。",
   },
 ];

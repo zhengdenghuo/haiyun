@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
   title: `${site.name}｜台灣集運・大陸寄台灣海運專線`,
   description:
-    "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快包稅與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
+    "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
   absoluteTitle: true,
 });
 

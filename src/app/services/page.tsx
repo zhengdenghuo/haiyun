@@ -6,9 +6,9 @@ import { services } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/services",
-  title: "台灣集運服務｜海運・海快包稅・空運專線",
+  title: "台灣集運服務｜海運・海快・空運專線",
   description:
-    "大陸寄台灣海運專線、海快包稅、空運普貨與港澳、東南亞線路，提供合箱加固、驗貨拍照、分箱等倉內增值服務，依貨物屬性推薦最合適的集運方案。",
+    "大陸寄台灣海運專線、海快、空運普貨與港澳、東南亞線路，提供合箱加固、驗貨拍照、分箱等倉內增值服務，依貨物屬性推薦最合適的集運方案。",
 });
 
 export default function ServicesPage() {

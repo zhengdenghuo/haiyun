@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/pricing",
   title: "集運收費標準｜台灣海運、空運運費",
   description:
-    "台灣集運運費怎麼算？海運、海快包稅、空運每公斤單價與參考時效一覽，附體積重計算方式，以及加固、拍照、保價等增值服務費用。",
+    "台灣集運運費怎麼算？海運家具、海快、空運每公斤單價與參考時效一覽，附材積與半拋計算方式，以及加固、拍照、保價等增值服務費用。",
 });
 
 export default function PricingPage() {
@@ -18,7 +18,7 @@ export default function PricingPage() {
       <PageHero
         eyebrow="Pricing"
         title="收費標準"
-        description="以下為參考價，實際以倉庫測量與當期線路公告為準。計費通常取實重與體積重較大值。"
+        description="以下為參考價，實際以倉庫測量與當期線路公告為準。海運家具按重量與材積較高者計費，海快、空運按半拋計算。"
       />
 
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -72,7 +72,8 @@ export default function PricingPage() {
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
         <h2 className="font-display text-3xl text-ocean-900">計費規則摘要</h2>
         <ul className="mt-6 max-w-3xl space-y-3 text-ink-muted">
-          <li>· 體積重（kg）≈ 長 × 寬 × 高（cm） ÷ 6000；空運常用此公式，海運部分線路按材計。</li>
+          <li>· 海運家具：重量運費（每公斤 ¥4.5 起）與材積運費（每材 ¥25 起）取較高者；材數 ＝ 長 × 寬 × 高（cm）÷ 28,317。</li>
+          <li>· 海快、空運按半拋計算：體積重（kg）＝ 長 × 寬 × 高（cm）÷ 6000；體積重大於實重時，計費重 ＝ 實重 ＋（體積重 − 實重）÷ 2，否則按實重計。</li>
           <li>· 單票有最低計費重，不足按最低重計；超長、超重另計附加費。</li>
           <li>· 偏遠地區、外島、特殊地址可能產生派送附加，下單前可諮詢客服。</li>
           <li>· 價格如有調整，以客服最新報價為準。</li>

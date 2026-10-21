@@ -7,7 +7,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/estimate",
   title: "台灣集運運費試算｜海運、空運運費計算",
   description:
-    "輸入包裹重量與長寬高，即時估算大陸寄台灣海運、海快包稅與空運集運運費，依實重與體積重取大值計費。",
+    "輸入包裹重量與長寬高，即時估算大陸寄台灣海運家具、海快與空運集運運費，海運按重量與材積較高者、海快與空運按半拋計算。",
 });
 
 export default function EstimatePage() {

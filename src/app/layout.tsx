@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: `%s｜${site.name}`,
   },
   description:
-    "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快包稅與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
+    "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
   applicationName: site.name,
   openGraph: {
     siteName: site.name,
