@@ -1,11 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { CM3_PER_CAI, laneCost, pricingLanes } from "@/lib/site";
 
 type Item = { id: number; name: string; l: string; w: string; h: string; qty: string };
-
-const CM3_PER_CAI = 28317;
-const FCL_HINT_M3 = 15;
 
 let nextId = 3;
 
@@ -14,6 +12,7 @@ export function EstimateTool() {
     { id: 1, name: "三人座沙發", l: "200", w: "90", h: "85", qty: "1" },
     { id: 2, name: "床架", l: "210", w: "40", h: "30", qty: "2" },
   ]);
+  const [weight, setWeight] = useState("80");
 
   const rows = useMemo(
     () =>
@@ -25,6 +24,11 @@ export function EstimateTool() {
   );
   const totalCai = rows.reduce((sum, row) => sum + row.cai, 0);
   const totalM3 = rows.reduce((sum, row) => sum + row.m3, 0);
+  const totalKg = Number(weight) || 0;
+  const costs = pricingLanes.map((lane) => ({
+    lane,
+    cost: Math.ceil(laneCost(lane, totalKg, totalCai * CM3_PER_CAI)),
+  }));
 
   function update(id: number, key: keyof Item, value: string) {
     setItems((list) => list.map((item) => (item.id === id ? { ...item, [key]: value } : item)));
@@ -100,10 +104,31 @@ export function EstimateTool() {
           <p className="heading mt-1 text-3xl text-white">{totalM3.toFixed(2)} m³</p>
         </div>
       </div>
+
+      <label className="mt-6 flex flex-wrap items-center gap-3 text-sm">
+        <span className="font-semibold text-char-900">合計實重（kg）</span>
+        <input
+          type="number"
+          min="0"
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          className="w-32 rounded-lg border border-sand-300 bg-white px-3 py-2 outline-none focus:border-ember-500"
+        />
+        <span className="text-xs text-ink-soft">所有品項含包裝的總重量</span>
+      </label>
+
+      <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+        {costs.map(({ lane, cost }) => (
+          <li key={lane.id} className="rounded-2xl border border-sand-200 bg-sand-50 p-4">
+            <p className="text-xs text-ink-soft">{lane.name}</p>
+            <p className="heading mt-1 text-2xl text-char-950">約 ¥{cost.toLocaleString()}</p>
+            <p className="mt-1 text-xs text-ink-soft">{lane.eta}</p>
+          </li>
+        ))}
+      </ul>
+
       <p className="mt-3 text-sm text-ink-soft">
-        {totalM3 >= FCL_HINT_M3
-          ? `總體積已超過約 ${FCL_HINT_M3} 立方米，整櫃有機會比併櫃划算，可請客服幫你比較。`
-          : "試算僅估體積，實際費用依倉庫量測、線路與送貨條件報價。"}
+        海運家具按重量與才數取較高者，海快、空運按半拋計算。實際費用以倉庫量測與客服報價為準。
       </p>
     </div>
   );

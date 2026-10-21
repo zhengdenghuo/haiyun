@@ -52,26 +52,21 @@ export const services = [
   {
     id: "furniture",
     title: "家具海運",
-    summary: "沙發、床架、床墊、餐桌椅、衣櫃與書櫃，依尺寸計價，可代為拆裝與木架加固。",
+    summary: "沙發、床架、床墊、餐桌椅、衣櫃與書櫃，依尺寸計價，可打木架加固。",
     examples: ["實木家具", "布藝沙發", "床架床墊", "系統櫃"],
   },
   {
     id: "appliances",
     title: "大型家電",
     summary: "冰箱、洗衣機、按摩椅、跑步機等大件電器，出倉前拍照確認外觀，全程防撞包裝。",
+    note: "實際可寄品項與規格，請先諮詢客服。",
     examples: ["冰箱", "洗衣機", "按摩椅", "健身器材"],
   },
   {
     id: "building",
     title: "建材與衛浴",
-    summary: "磁磚、木地板、浴櫃、燈具、門窗五金，適合裝修整批採購，可依工地進度分批送貨。",
-    examples: ["磁磚地板", "浴櫃馬桶", "燈具", "門窗五金"],
-  },
-  {
-    id: "moving",
-    title: "搬家與整櫃",
-    summary: "回台搬家、工作室遷移或大量備貨，可評估併櫃或 20 呎 / 40 呎整櫃，由專人規劃裝櫃。",
-    examples: ["搬家行李", "整櫃專送", "工作室遷移", "大量備貨"],
+    summary: "木地板、浴櫃、燈具、門窗五金，適合裝修整批採購，可依工地進度分批送貨。磁磚、瓷磚暫不收寄。",
+    examples: ["木地板", "浴櫃馬桶", "燈具", "門窗五金"],
   },
 ];
 
@@ -94,7 +89,7 @@ export const processSteps = [
   {
     step: "04",
     title: "海運與清關",
-    desc: "併櫃或整櫃出運，依實際品名與貨值申報，清關進度由客服同步。",
+    desc: "海運出貨，依實際品名與貨值申報，清關進度由客服同步。",
   },
   {
     step: "05",
@@ -103,30 +98,56 @@ export const processSteps = [
   },
 ];
 
-export const pricingPlans = [
+export const CM3_PER_CAI = 28317;
+export const VOLUME_DIVISOR = 6000;
+
+export function halfVolumeWeight(actualKg: number, volumeKg: number) {
+  return volumeKg > actualKg ? actualKg + (volumeKg - actualKg) / 2 : actualKg;
+}
+
+export const pricingLanes = [
   {
-    name: "併櫃海運",
-    basis: "依才數計價",
-    fits: "單件或數件家具、家電",
-    note: "有最低計費才數，未達以最低才數計",
+    id: "sea",
+    name: "台灣海運 · 家具",
+    unit: "¥4.5 / kg 起",
+    volume: "¥25 / 才 起",
+    eta: "約 10–12 工作日",
+    note: "重量運費與材積運費取較高者",
+    perKg: 4.5,
+    perCai: 25,
   },
   {
-    name: "整櫃海運",
-    basis: "20 呎 / 40 呎整櫃報價",
-    fits: "搬家、裝修整批、大量備貨",
-    note: "依裝櫃量與送貨地點評估",
+    id: "sea-fast",
+    name: "台灣海快（不包稅）",
+    unit: "¥10 / kg 起",
+    volume: "按半拋計算",
+    eta: "約 3–6 工作日",
+    note: "不含稅費，如需繳稅由收件人依台灣海關規定繳納",
+    perKg: 10,
+    perCai: 0,
   },
   {
-    name: "大件快線",
-    basis: "依才數計價",
-    fits: "急需到貨的單件大件",
-    note: "船期較密，費用高於一般併櫃",
+    id: "air",
+    name: "台灣空運 · 普貨",
+    unit: "¥25 / kg 起",
+    volume: "按半拋計算",
+    eta: "約 2–4 工作日",
+    note: "急件適用；特殊品項需先審核",
+    perKg: 25,
+    perCai: 0,
   },
-];
+] as const;
+
+export function laneCost(lane: (typeof pricingLanes)[number], actualKg: number, cm3: number) {
+  if (lane.perCai) {
+    return Math.max(actualKg * lane.perKg, (cm3 / CM3_PER_CAI) * lane.perCai);
+  }
+  return halfVolumeWeight(actualKg, cm3 / VOLUME_DIVISOR) * lane.perKg;
+}
 
 export const addOnFees = [
   { name: "木架加固", fee: "依尺寸報價", desc: "實木家具、玻璃、石材建議加購" },
-  { name: "拆裝與組裝", fee: "依品項報價", desc: "大件家具可代拆寄出、到府組裝" },
+  { name: "到府組裝", fee: "依品項報價", desc: "分箱出貨的家具可預約到府組裝" },
   { name: "搬運上樓", fee: "依樓層與電梯報價", desc: "無電梯或樓梯狹窄需事先告知" },
   { name: "偏遠地區派送", fee: "依地區報價", desc: "山區、離島另行評估" },
   { name: "倉儲", fee: "到倉後免費保管一段時間", desc: "逾期天數與費用以客服說明為準" },
@@ -158,8 +179,8 @@ export const warehouseInfo = {
       desc: "外加木條框架，適合實木家具、玻璃桌面、石材與易碎大件。",
     },
     {
-      title: "拆件分裝",
-      desc: "可拆的床架、櫃體先拆開分箱，縮小體積、降低運費。",
+      title: "原箱加強",
+      desc: "家電與分箱出貨的家具保留原廠紙箱，外加護角與纏膜加強保護。",
     },
   ],
 };
@@ -179,7 +200,7 @@ export const guideSections = [
     title: "包裝要求",
     items: [
       "玻璃、石材、實木雕花等易碎品建議加購木架。",
-      "可拆的家具盡量拆件寄送，能明顯降低才數。",
+      "下單時優先選擇賣家分箱出貨的款式，能明顯降低才數。",
       "家電請保留原廠紙箱與內部固定材料。",
     ],
   },
@@ -207,6 +228,7 @@ export const guideSections = [
     items: [
       "易燃易爆品、壓縮氣體、化學品與油漆。",
       "含肉類成分的食品、植物、種子與土壤。",
+      "磁磚、瓷磚等建材。",
       "仿冒侵權商品、武器與管制物品。",
       "不確定的品項，請先把商品連結傳給客服確認。",
     ],
@@ -216,11 +238,11 @@ export const guideSections = [
 export const faqs = [
   {
     q: "一張沙發大概多少錢？",
-    a: "大件以才數計價，主要看包裝後的長寬高。把商品連結或尺寸傳給客服，就能拿到正式報價，也可以先用才數試算工具估算體積。",
+    a: "海運家具每才 ¥25 起、每公斤 ¥4.5 起，兩者取較高者計費。以 200 × 90 × 85 公分的三人座沙發為例約 54 才，可以先用才數試算工具估算，再把商品連結傳給客服拿正式報價。",
   },
   {
     q: "可以只寄一件家具嗎？",
-    a: "可以。單件走併櫃海運，有最低計費才數；數量多時再評估是否改走整櫃比較划算。",
+    a: "可以。單件也能寄，有最低計費才數；如果有其他大件可以一起寄，攤平成本。",
   },
   {
     q: "到台灣後可以送上樓嗎？",

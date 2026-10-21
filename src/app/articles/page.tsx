@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/articles",
   title: "大件知識｜家具家電寄台灣運費、包裝與送貨教學",
   description:
-    "寄大件到台灣前必讀：家具運費與才數怎麼算、木架包裝怎麼選、冰箱洗衣機海運注意事項、整櫃併櫃比較，以及送貨到府的確認重點。",
+    "寄大件到台灣前必讀：家具運費與才數怎麼算、木架包裝怎麼選、冰箱洗衣機海運注意事項，以及送貨到府的確認重點。",
 });
 
 export default function ArticlesPage() {

@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/about",
   title: "關於海兔｜專做大件寄台灣的集運團隊",
   description:
-    "海兔集運專注大件寄台灣：家具、家電、建材與回台搬家。先估價再寄倉、出倉前拍照、依品項專門包裝，送貨前預約時間。",
+    "海兔集運專注大件寄台灣：家具、家電與建材。先估價再寄倉、出倉前拍照、依品項專門包裝，送貨前預約時間。",
 });
 
 export default function AboutPage() {

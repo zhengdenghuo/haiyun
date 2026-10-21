@@ -6,16 +6,15 @@ import { services } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/services",
-  title: "大件服務｜家具、家電、建材與搬家寄台灣",
+  title: "大件服務｜家具、家電與建材寄台灣",
   description:
-    "海兔集運大件服務：家具海運、大型家電、建材衛浴與回台搬家整櫃。依才數計價，提供驗貨拍照、木架加固、拆裝組裝與送貨上樓。",
+    "海兔集運大件服務：家具海運、大型家電與建材衛浴。依才數計價，提供驗貨拍照、木架加固、到府組裝與送貨上樓。",
 });
 
 const handling: Record<string, string[]> = {
-  furniture: ["可代拆床架、櫃體分件寄送", "實木與玻璃件建議木架", "到府可加購組裝"],
+  furniture: ["可打木架加固，防撞防壓", "實木與玻璃件建議加購木架", "到府可加購組裝"],
   appliances: ["到倉拍照確認外觀與配件", "保留原廠紙箱與固定材", "注意台灣 110V 電壓規格"],
-  building: ["整批到倉後統一裝櫃", "磁磚石材加強底部承重", "可依工程進度分批送貨"],
-  moving: ["先評估總立方數再選櫃型", "專人規劃裝櫃順序", "到台後依樓層安排人力"],
+  building: ["整批到倉後統一出貨", "浴櫃、燈具加強防撞包裝", "可依工程進度分批送貨"],
 };
 
 export default function ServicesPage() {
@@ -23,8 +22,8 @@ export default function ServicesPage() {
     <>
       <PageIntro
         label="大件服務"
-        title="四類大件，各有對應的包裝與送法"
-        lead="不論是一張沙發還是一整個家，先依品項決定包裝、再依數量選擇併櫃或整櫃，最後安排送貨到府。"
+        title="三類大件，各有對應的包裝與送法"
+        lead="不論是一張沙發還是一批裝修建材，先依品項決定包裝，再安排海運與送貨到府。"
       />
 
       <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
@@ -47,6 +46,11 @@ export default function ServicesPage() {
             </div>
             <div>
               <p className="text-lg leading-relaxed text-ink">{service.summary}</p>
+              {"note" in service ? (
+                <p className="mt-3 inline-block rounded-lg bg-ember-100 px-3 py-1.5 text-sm font-semibold text-ember-600">
+                  備註：{service.note}
+                </p>
+              ) : null}
               <div className="card mt-5 rounded-2xl p-5">
                 <p className="text-sm font-semibold text-ember-600">我們怎麼處理</p>
                 <ul className="mt-3 space-y-2 text-sm text-ink-soft">

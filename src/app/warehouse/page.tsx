@@ -8,7 +8,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/warehouse",
   title: "倉庫與包裝｜大件收貨規範與木架加固",
   description:
-    "海兔集運大件倉收貨規範與包裝方式：收件人填寫方式、超大超重件預約卸貨、到倉拍照，以及氣泡護角、木架加固與拆件分裝的選擇。",
+    "海兔集運大件倉收貨規範與包裝方式：收件人填寫方式、超大超重件預約卸貨、到倉拍照，以及氣泡護角、木架加固與原箱加強的選擇。",
 });
 
 export default function WarehousePage() {

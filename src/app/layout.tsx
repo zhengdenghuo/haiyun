@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     template: `%s｜${site.name}`,
   },
   description:
-    "海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機、磁磚建材與回台搬家，依才數計價，木架加固、送貨上樓、到府組裝一次安排。",
+    "海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機與裝修建材，依才數計價，木架加固、送貨上樓、到府組裝一次安排。",
   applicationName: site.name,
   openGraph: {
     siteName: site.name,
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
 const streetAddress = `${warehouseInfo.district}${warehouseInfo.detail}`;
 
 const businessJsonLd = {
-  "@type": "MovingCompany",
+  "@type": "LocalBusiness",
   "@id": `${site.url}/#business`,
   name: site.name,
   alternateName: site.englishName,
   url: `${site.url}/`,
   logo: `${site.url}/icon.png`,
   image: `${site.url}${ogImage.url}`,
-  description: "家具、家電、建材與搬家等大件貨物寄台灣的海運集運服務。",
+  description: "家具、家電與建材等大件貨物寄台灣的海運集運服務。",
   areaServed: "TW",
   openingHours: "Mo-Sa 09:00-20:00",
   ...(site.phone ? { telephone: site.phone } : {}),

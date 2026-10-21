@@ -3,13 +3,13 @@ import Link from "next/link";
 import { QuoteBand } from "@/components/QuoteBand";
 import { articles } from "@/lib/articles";
 import { pageMetadata } from "@/lib/seo";
-import { faqs, processSteps, services, site } from "@/lib/site";
+import { CM3_PER_CAI, faqs, pricingLanes, processSteps, services, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
   title: `${site.name}｜家具・家電・建材大件寄台灣海運`,
   description:
-    "海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機、磁磚建材與回台搬家，依才數計價，木架加固、送貨上樓、到府組裝一次安排。",
+    "海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機與裝修建材，依才數計價，木架加固、送貨上樓、到府組裝一次安排。",
   absoluteTitle: true,
 });
 
@@ -20,7 +20,10 @@ const quoteNeeds = [
 ];
 
 const sofa = { l: 200, w: 90, h: 85 };
-const sofaCai = ((sofa.l * sofa.w * sofa.h) / 28317).toFixed(1);
+const sofaCm3 = sofa.l * sofa.w * sofa.h;
+const sofaCai = (sofaCm3 / CM3_PER_CAI).toFixed(1);
+const seaLane = pricingLanes[0];
+const sofaSeaCost = Math.ceil((sofaCm3 / CM3_PER_CAI) * seaLane.perCai);
 
 export default function HomePage() {
   return (
@@ -38,7 +41,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
-              沙發、床架、冰箱、磁磚到整批搬家，從大陸倉驗貨包裝、海運清關，一路送到台灣家門口。
+              沙發、床架、冰箱到裝修建材，從大陸倉驗貨包裝、海運清關，一路送到台灣家門口。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -84,7 +87,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
         <h2 className="heading ember-bar text-2xl text-char-950 md:text-3xl">專門處理這些大件</h2>
         <p className="mt-3 max-w-2xl text-ink-soft">不寄小包裹，只做大件。每一類都有對應的包裝與送貨方式。</p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Link
               key={service.id}
@@ -113,7 +116,7 @@ export default function HomePage() {
               大件家具和家電體積大、重量相對輕，所以海運主要依包裝後的體積計價。台灣常用的單位是「才」，1 才約等於 1 立方英尺。
             </p>
             <p className="mt-3 leading-relaxed text-ink-soft">
-              才數 ＝ 長 × 寬 × 高（公分）÷ 28,317。可拆的家具先拆件、去掉多餘外箱，才數就能明顯降低。
+              才數 ＝ 長 × 寬 × 高（公分）÷ 28,317。選擇分箱出貨的款式、去掉多餘外箱，才數就能明顯降低。
             </p>
             <div className="mt-6 flex flex-wrap gap-4 text-sm">
               <Link href="/pricing" className="font-semibold text-ember-600 hover:underline">
@@ -137,11 +140,14 @@ export default function HomePage() {
               <div>
                 <p className="text-xs text-ink-soft">立方米</p>
                 <p className="heading mt-1 text-3xl text-char-950">
-                  約 {((sofa.l * sofa.w * sofa.h) / 1_000_000).toFixed(2)} m³
+                  約 {(sofaCm3 / 1_000_000).toFixed(2)} m³
                 </p>
               </div>
             </div>
-            <p className="mt-5 text-xs text-ink-soft">實際費用依才數、線路與送貨條件報價。</p>
+            <p className="mt-5 rounded-xl bg-ember-100 px-4 py-3 text-sm text-ember-600">
+              海運家具每才 ¥{seaLane.perCai} 起，這張沙發材積運費約 ¥{sofaSeaCost.toLocaleString()} 起
+            </p>
+            <p className="mt-3 text-xs text-ink-soft">實際費用依重量、才數與送貨條件報價。</p>
           </div>
         </div>
       </section>

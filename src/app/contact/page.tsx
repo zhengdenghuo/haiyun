@@ -77,7 +77,7 @@ export default function ContactPage() {
               <li>商品連結或照片</li>
               <li>包裝後的長、寬、高與件數</li>
               <li>送貨地區、樓層與有無電梯</li>
-              <li>是否需要拆裝、組裝或木架</li>
+              <li>是否需要組裝或木架</li>
             </ul>
           </div>
         </aside>

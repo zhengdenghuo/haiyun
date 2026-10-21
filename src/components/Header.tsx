@@ -15,7 +15,7 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur">
       <div className="bg-char-900 text-xs text-sand-200">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-1.5 md:px-6">
-          <p>家具・家電・建材・搬家｜大件專線寄台灣</p>
+          <p>家具・家電・建材｜大件專線寄台灣</p>
           <p className="hidden sm:block">{site.hours}</p>
         </div>
       </div>
