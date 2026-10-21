@@ -1,45 +1,44 @@
 @import "tailwindcss";
 
 :root {
-  --ocean-950: #061018;
-  --ocean-900: #0a1c2c;
-  --ocean-800: #123048;
-  --ocean-700: #1a4563;
-  --sea-500: #1f8a7e;
-  --sea-400: #2aa89a;
-  --sea-300: #5ec4b8;
-  --mist-50: #f3f7f9;
-  --mist-100: #e6eef3;
-  --mist-200: #d0dde6;
-  --sand-100: #f0ebe3;
-  --ink: #102033;
-  --ink-muted: #5a6b7a;
-  --foam: #f8fbfc;
-  --accent: #c45c26;
-  --background: var(--foam);
+  --char-950: #17130f;
+  --char-900: #211b16;
+  --char-800: #2f2620;
+  --char-700: #4a3c31;
+  --ember-600: #c2571b;
+  --ember-500: #e06a24;
+  --ember-400: #f08a45;
+  --ember-100: #fde9da;
+  --sand-50: #fbf8f3;
+  --sand-100: #f4eee5;
+  --sand-200: #e7ddcf;
+  --sand-300: #d4c6b3;
+  --ink: #251e19;
+  --ink-soft: #6b5d52;
+  --paper: #fffdf9;
+  --background: var(--sand-50);
   --foreground: var(--ink);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-ocean-950: var(--ocean-950);
-  --color-ocean-900: var(--ocean-900);
-  --color-ocean-800: var(--ocean-800);
-  --color-ocean-700: var(--ocean-700);
-  --color-sea-500: var(--sea-500);
-  --color-sea-400: var(--sea-400);
-  --color-sea-300: var(--sea-300);
-  --color-mist-50: var(--mist-50);
-  --color-mist-100: var(--mist-100);
-  --color-mist-200: var(--mist-200);
+  --color-char-950: var(--char-950);
+  --color-char-900: var(--char-900);
+  --color-char-800: var(--char-800);
+  --color-char-700: var(--char-700);
+  --color-ember-600: var(--ember-600);
+  --color-ember-500: var(--ember-500);
+  --color-ember-400: var(--ember-400);
+  --color-ember-100: var(--ember-100);
+  --color-sand-50: var(--sand-50);
   --color-sand-100: var(--sand-100);
+  --color-sand-200: var(--sand-200);
+  --color-sand-300: var(--sand-300);
   --color-ink: var(--ink);
-  --color-ink-muted: var(--ink-muted);
-  --color-foam: var(--foam);
-  --color-accent: var(--accent);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
   --font-sans: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", "Segoe UI", sans-serif;
-  --font-display: "Songti TC", "Source Han Serif TC", "Noto Serif TC", "PMingLiU", serif;
 }
 
 html {
@@ -52,85 +51,49 @@ body {
   font-family: var(--font-sans);
 }
 
-.font-display {
-  font-family: var(--font-display);
-}
-
 ::selection {
-  background: color-mix(in srgb, var(--sea-400) 35%, white);
-  color: var(--ocean-950);
+  background: var(--ember-100);
+  color: var(--char-950);
 }
 
-@keyframes drift {
-  0%,
-  100% {
-    transform: translateX(0) translateY(0);
-  }
-  50% {
-    transform: translateX(12px) translateY(-6px);
-  }
+.heading {
+  font-weight: 800;
+  letter-spacing: -0.01em;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(18px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.card {
+  background: var(--paper);
+  border: 1px solid var(--sand-200);
 }
 
-@keyframes wave-shift {
-  0% {
-    background-position: 0% 50%;
-  }
-  100% {
-    background-position: 100% 50%;
-  }
+.grid-paper {
+  background-color: var(--sand-100);
+  background-image:
+    linear-gradient(var(--sand-200) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sand-200) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-.animate-drift {
-  animation: drift 9s ease-in-out infinite;
+.ember-bar {
+  position: relative;
+  padding-left: 0.875rem;
 }
 
-.animate-rise {
-  animation: rise 0.8s ease-out both;
+.ember-bar::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.2em;
+  bottom: 0.2em;
+  width: 4px;
+  border-radius: 2px;
+  background: var(--ember-500);
 }
 
-.animate-rise-delay-1 {
-  animation: rise 0.8s ease-out 0.12s both;
+details > summary {
+  list-style: none;
 }
 
-.animate-rise-delay-2 {
-  animation: rise 0.8s ease-out 0.24s both;
-}
-
-.animate-rise-delay-3 {
-  animation: rise 0.8s ease-out 0.36s both;
-}
-
-.hero-atmosphere {
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 20%, rgba(42, 168, 154, 0.22), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 15% 80%, rgba(26, 69, 99, 0.45), transparent 50%),
-    linear-gradient(160deg, #061018 0%, #0a1c2c 42%, #123048 100%);
-  background-size: 120% 120%, 100% 100%, 100% 100%;
-  animation: wave-shift 18s ease-in-out infinite alternate;
-}
-
-.wave-divider {
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 64' preserveAspectRatio='none' fill='none'%3E%3Cpath d='M0 32c120 24 240-24 360-16s240 40 360 32 240-40 360-32 240 40 360 16v32H0V32z' fill='%23f8fbfc'/%3E%3C/svg%3E")
-    center bottom / 100% 100% no-repeat;
-}
-
-.section-wash {
-  background:
-    linear-gradient(180deg, var(--foam) 0%, var(--mist-50) 48%, var(--foam) 100%);
-}
-
-.soft-panel {
-  background: color-mix(in srgb, white 82%, var(--mist-100));
-  border: 1px solid color-mix(in srgb, var(--mist-200) 70%, transparent);
+details > summary::-webkit-details-marker {
+  display: none;
 }

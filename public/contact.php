@@ -129,7 +129,7 @@ if (isset($body['website']) && trim((string) $body['website']) !== '') {
 }
 
 if ($fields['name'] === '' || $fields['phone'] === '' || $fields['content'] === '') {
-    respond(400, array('error' => '請完整填寫姓名、聯繫方式與諮詢內容。'));
+    respond(400, array('error' => '請填寫稱呼、聯絡方式與品項尺寸。'));
 }
 
 foreach ($limits as $key => $max) {
@@ -151,12 +151,12 @@ if (!is_array($config) || empty($config['user']) || empty($config['pass'])) {
 }
 
 $text = implode("\n", array(
-    '姓名 / 稱呼：' . $fields['name'],
-    '手機或微信：' . $fields['phone'],
-    '目的地：' . ($fields['dest'] !== '' ? $fields['dest'] : '未填寫'),
-    '諮詢內容：' . $fields['content'],
+    '稱呼：' . $fields['name'],
+    '聯絡方式：' . $fields['phone'],
+    '送貨地區與樓層：' . ($fields['dest'] !== '' ? $fields['dest'] : '未填寫'),
+    '品項與尺寸：' . $fields['content'],
 ));
-$subject = '官網諮詢：' . $fields['name'] . '（' . $fields['phone'] . '）';
+$subject = '大件估價：' . $fields['name'] . '（' . $fields['phone'] . '）';
 $to = !empty($config['to']) ? $config['to'] : $config['user'];
 
 $error = '';

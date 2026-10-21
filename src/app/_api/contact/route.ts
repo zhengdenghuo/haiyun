@@ -80,7 +80,7 @@ export async function POST(request: Request) {
 
   try {
     await transporter.sendMail({
-      from: `"鯨魚海運官網" <${SMTP_USER}>`,
+      from: `"海兔集運官網" <${SMTP_USER}>`,
       to: CONTACT_TO || SMTP_USER,
       subject: `官網諮詢：${name}（${phone}）`,
       text: rows.map(([label, value]) => `${label}：${value}`).join("\n"),

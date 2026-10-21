@@ -5,7 +5,7 @@ export const ogImage = {
   url: "/og-image.png",
   width: 1200,
   height: 630,
-  alt: `${site.name}｜台灣集運・大陸寄台灣海運專線`,
+  alt: `${site.name}｜家具・家電・建材大件寄台灣`,
 };
 
 export function pageMetadata({

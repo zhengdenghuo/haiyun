@@ -1,58 +1,58 @@
 import type { Metadata } from "next";
-import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
+import { PageIntro } from "@/components/PageIntro";
+import { QuoteBand } from "@/components/QuoteBand";
 import { pageMetadata } from "@/lib/seo";
 import { guideSections } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/guide",
-  title: "集運須知｜違禁品、清關與打包說明",
+  title: "寄送須知｜大件尺寸量測、包裝與送貨到府",
   description:
-    "集運下單前準備、打包建議、清關與稅費說明，以及違禁品與限制品清單（鋰電池、液體、粉末等），避免包裹無法出庫或延誤清關。",
+    "寄大件到台灣前必看：包裝尺寸怎麼量、易碎家具包裝要求、送貨到府前要確認的電梯與巷弄、清關申報原則，以及不收寄的品項。",
 });
 
 export default function GuidePage() {
   return (
     <>
-      <PageHero
-        eyebrow="Guide"
-        title="集運須知"
-        description="下單、打包、清關與違禁說明集中在此。首次集運建議通讀違禁品一節，避免無法出庫。"
+      <PageIntro
+        label="寄送須知"
+        title="寄大件之前，先確認這五件事"
+        lead="尺寸量對、包裝選對、送貨條件說清楚，就能避免大部分的加價與延誤。"
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <div className="mb-10 flex flex-wrap gap-3">
-          {guideSections.map((section) => (
-            <a
-              key={section.id}
-              href={`#${section.id}`}
-              className="rounded-md border border-mist-200 bg-white px-3 py-1.5 text-sm text-ocean-800 transition hover:border-sea-300"
-            >
-              {section.title}
-            </a>
-          ))}
-        </div>
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:px-6 lg:grid-cols-[220px_1fr]">
+        <nav aria-label="本頁目錄" className="lg:sticky lg:top-32 lg:self-start">
+          <ul className="flex flex-wrap gap-2 lg:flex-col lg:gap-1">
+            {guideSections.map((section, index) => (
+              <li key={section.id}>
+                <a
+                  href={`#${section.id}`}
+                  className="block rounded-lg px-3 py-2 text-sm text-ink hover:bg-sand-100 hover:text-ember-600"
+                >
+                  {index + 1}. {section.title}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </nav>
 
-        <div className="space-y-14">
-          {guideSections.map((section) => (
-            <article key={section.id} id={section.id} className="scroll-mt-24">
-              <h2 className="font-display text-3xl text-ocean-900">{section.title}</h2>
-              <ul className="mt-5 max-w-3xl space-y-3">
+        <div className="space-y-6">
+          {guideSections.map((section, index) => (
+            <section key={section.id} id={section.id} className="card scroll-mt-32 rounded-2xl p-6 md:p-8">
+              <h2 className="heading text-xl text-char-950 md:text-2xl">
+                <span className="text-ember-500">{index + 1}.</span> {section.title}
+              </h2>
+              <ul className="mt-4 list-disc space-y-2 pl-5 leading-relaxed text-ink-soft">
                 {section.items.map((item) => (
-                  <li key={item} className="text-ink-muted leading-relaxed">
-                    · {item}
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
-            </article>
+            </section>
           ))}
         </div>
-      </section>
+      </div>
 
-      <CtaBanner
-        title="仍有不確定的品類？"
-        description="把商品鏈接或成分說明發給客服，我們會在工作時間內回覆是否可運。"
-      />
+      <QuoteBand title="還有不確定的地方？" text="把商品連結或照片傳給客服，寄之前就能確認能不能收、怎麼包。" />
     </>
   );
 }

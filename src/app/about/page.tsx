@@ -1,64 +1,49 @@
 import type { Metadata } from "next";
-import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
+import { PageIntro } from "@/components/PageIntro";
+import { QuoteBand } from "@/components/QuoteBand";
 import { pageMetadata } from "@/lib/seo";
-import { aboutStats, promises, site } from "@/lib/site";
+import { promises, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/about",
-  title: "關於鯨魚海運｜東莞虎門台灣集運倉",
+  title: "關於海兔｜專做大件寄台灣的集運團隊",
   description:
-    "鯨魚海運紮根珠三角倉配網絡，專注大陸至台灣、港澳及東南亞的跨境集運，強調計費透明、軌跡可查與專屬客服跟進。",
+    "海兔集運專注大件寄台灣：家具、家電、建材與回台搬家。先估價再寄倉、出倉前拍照、依品項專門包裝，送貨前預約時間。",
 });
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero
-        eyebrow="About"
-        title={`關於${site.name}`}
-        description="我們相信跨境物流不必神秘：地址清晰、費用可預期、異常有人跟。鯨魚海運把倉配與幹線串成一條可理解的服務。"
+      <PageIntro
+        label="關於海兔"
+        title="只做大件，所以更懂大件"
+        lead={`${site.name}專注處理一般集運不方便收的大型貨物，從估價、包裝到送貨上樓都以大件的需求來安排。`}
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
-          <div>
-            <h2 className="font-display text-3xl text-ocean-900">品牌簡介</h2>
-            <p className="mt-4 leading-relaxed text-ink-muted">
-              {site.name}（{site.englishName}）面向個人買家、留學生家庭與小微跨境店鋪，提供大陸收貨、合箱加固、海運空運專線及目的地派送。團隊深耕珠三角港口與倉配協同，強調「小票也能被認真對待」。
-            </p>
-          </div>
-          <dl className="grid grid-cols-2 gap-4">
-            {aboutStats.map((stat) => (
-              <div key={stat.label} className="soft-panel rounded-xl p-5">
-                <dt className="text-xs text-ink-muted">{stat.label}</dt>
-                <dd className="mt-2 font-display text-2xl text-ocean-900">{stat.value}</dd>
-              </div>
-            ))}
-          </dl>
+      <section className="mx-auto grid max-w-6xl gap-10 px-4 py-14 md:px-6 lg:grid-cols-2">
+        <div className="space-y-4 leading-relaxed text-ink">
+          <h2 className="heading ember-bar text-2xl text-char-950">為什麼專做大件</h2>
+          <p>
+            在大陸買家具、家電和建材，價格與選擇往往更多，但寄回台灣卻常卡在「太大、太重、不好包、送不上樓」。
+          </p>
+          <p>
+            一般小包集運以重量計價、流程為輕小件設計；大件需要的是體積估算、木架包裝、裝櫃規劃與到府搬運。我們把這些環節整合在一起，讓大件也能有清楚的報價與流程。
+          </p>
         </div>
-      </section>
-
-      <section id="promise" className="scroll-mt-24 bg-mist-50">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-          <h2 className="font-display text-3xl text-ocean-900">服務承諾</h2>
-          <div className="mt-8 grid gap-8 sm:grid-cols-2">
+        <div id="commitments" className="scroll-mt-32">
+          <h2 className="heading ember-bar text-2xl text-char-950">服務承諾</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-2">
             {promises.map((item) => (
-              <article key={item.title}>
-                <h3 className="text-lg font-medium text-ocean-900">{item.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{item.desc}</p>
+              <article key={item.title} className="card rounded-2xl p-5">
+                <h3 className="heading text-lg text-char-950">{item.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{item.desc}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <CtaBanner
-        title="想了解合作或企業月結？"
-        description="留下聯繫方式與大致月出貨量，商務同事會與您對接。"
-        primaryHref="/contact"
-        primaryLabel="商務諮詢"
-      />
+      <QuoteBand title="有大件要寄，先聊聊看" text="告訴我們要寄什麼、送到哪裡，客服會給你完整的建議與報價。" />
     </>
   );
 }

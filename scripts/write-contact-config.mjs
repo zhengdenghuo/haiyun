@@ -25,7 +25,7 @@ const config = {
   user: SMTP_USER,
   pass: SMTP_PASS,
   to: CONTACT_TO || SMTP_USER,
-  from_name: "鯨魚海運官網",
+  from_name: "海兔集運官網",
 };
 
 const body = Object.entries(config)

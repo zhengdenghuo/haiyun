@@ -1,95 +1,65 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
+import { PageIntro } from "@/components/PageIntro";
+import { QuoteBand } from "@/components/QuoteBand";
 import { pageMetadata } from "@/lib/seo";
 import { processSteps } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/process",
-  title: "集運流程｜大陸寄台灣六步驟",
+  title: "運送流程｜大件家具寄台灣五步驟",
   description:
-    "大陸集運到台灣只要六步：與客服溝通、購物寄倉、包裹預報、合箱打包、付款發運、簽收確認。第一次使用淘寶、拼多多集運也能輕鬆上手。",
+    "大件家具家電寄台灣五步驟：傳照片估價、寄到大件倉、驗貨與木架包裝、海運清關、送貨到府。每一步要準備什麼、要注意什麼一次說明。",
 });
+
+const prepare: Record<string, string> = {
+  "01": "準備：商品連結、包裝尺寸、送貨地址與樓層",
+  "02": "準備：收件人填「海兔集運＋專屬編號」",
+  "03": "確認：到倉照片、是否加購木架或拆件",
+  "04": "確認：品名、數量與貨值如實申報",
+  "05": "確認：送貨時間、電梯與搬運動線",
+};
 
 export default function ProcessPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Process"
-        title="集運流程"
-        description="從溝通到簽收共六步。首次使用建議先向客服確認線路，並了解體積重計費規則。"
+      <PageIntro
+        label="運送流程"
+        title="從估價到送進家門，一共五步"
+        lead="大件最怕到倉才發現太大、送到才發現搬不上樓。所以每一步都先確認，再往下走。"
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <ol className="space-y-0">
-          {processSteps.map((step, index) => (
-            <li
-              key={step.step}
-              className="grid gap-4 border-l border-mist-200 py-8 pl-6 md:grid-cols-[100px_1fr] md:pl-10"
-            >
-              <div className="relative">
-                <span className="absolute -left-[2.05rem] top-1.5 h-3 w-3 rounded-full bg-sea-400 md:-left-[2.95rem]" />
-                <p className="font-display text-3xl text-ocean-800">{step.step}</p>
-              </div>
-              <div>
-                <h2 className="text-xl font-medium text-ocean-900 md:text-2xl">{step.title}</h2>
-                <p className="mt-2 max-w-2xl text-ink-muted leading-relaxed">{step.desc}</p>
-                {index === 0 ? (
-                  <p className="mt-3 text-sm text-sea-500">
-                    提示：取得倉庫地址後，請向客服確認收件人中是否已含您的專屬編號。
-                  </p>
-                ) : null}
-              </div>
+      <section className="mx-auto max-w-4xl px-4 py-14 md:px-6">
+        <ol className="relative border-l-2 border-sand-300 pl-8">
+          {processSteps.map((step) => (
+            <li key={step.step} className="relative pb-12 last:pb-0">
+              <span className="heading absolute -left-[3.32rem] top-0 flex h-10 w-10 items-center justify-center rounded-full bg-ember-500 text-sm text-white">
+                {step.step}
+              </span>
+              <h2 className="heading text-xl text-char-950 md:text-2xl">{step.title}</h2>
+              <p className="mt-2 leading-relaxed text-ink-soft">{step.desc}</p>
+              <p className="mt-3 inline-block rounded-lg bg-sand-100 px-3 py-2 text-sm text-ink">{prepare[step.step]}</p>
             </li>
           ))}
         </ol>
-      </section>
 
-      <section className="bg-mist-50">
-        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-          <h2 className="font-display text-3xl text-ocean-900">常見卡點與處理</h2>
-          <div className="mt-8 grid gap-8 md:grid-cols-3">
-            {[
-              [
-                "包裹長時間未入庫",
-                "核對快遞是否已簽收、收件人是否含專屬編號；仍無記錄可提交運單號由客服協查。",
-              ],
-              [
-                "體積重高於預期",
-                "鞋盒、燈具等空隙大的貨物建議去盒或加固壓縮；可先用運費估算工具粗算。",
-              ],
-              [
-                "清關查驗",
-                "如實申報品名、數量與貨值；包稅線路依實際貨值申報，稅費由我們代為繳納，特殊品類以客服通知為準。",
-              ],
-            ].map(([title, body]) => (
-              <article key={title}>
-                <h3 className="text-lg font-medium text-ocean-900">{title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-ink-muted">{body}</p>
-              </article>
-            ))}
-          </div>
-          <p className="mt-8 text-sm text-ink-muted">
-            更多細節見{" "}
-            <Link href="/guide" className="text-sea-500 hover:underline">
-              集運須知
-            </Link>{" "}
-            與{" "}
-            <Link href="/pricing" className="text-sea-500 hover:underline">
-              收費標準
+        <div className="card mt-14 rounded-2xl p-6">
+          <h2 className="heading text-lg text-char-950">寄之前建議先看</h2>
+          <div className="mt-3 flex flex-wrap gap-4 text-sm">
+            <Link href="/guide#measure" className="font-semibold text-ember-600 hover:underline">
+              尺寸怎麼量
             </Link>
-            。
-          </p>
+            <Link href="/warehouse" className="font-semibold text-ember-600 hover:underline">
+              包裝方式
+            </Link>
+            <Link href="/guide#delivery" className="font-semibold text-ember-600 hover:underline">
+              送貨到府前的確認
+            </Link>
+          </div>
         </div>
       </section>
 
-      <CtaBanner
-        title="按流程走，第一票也能順暢"
-        description="先獲取倉庫地址，或直接諮詢客服確認貨物是否可運。"
-        primaryHref="/warehouse"
-        primaryLabel="查看收貨倉庫"
-      />
+      <QuoteBand title="準備好第一步了嗎？" text="先把商品連結與尺寸傳給客服，估價不收費。" />
     </>
   );
 }

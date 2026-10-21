@@ -1,73 +1,78 @@
 import type { Metadata } from "next";
-import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
+import { PageIntro } from "@/components/PageIntro";
+import { QuoteBand } from "@/components/QuoteBand";
 import { pageMetadata } from "@/lib/seo";
 import { warehouseInfo } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/warehouse",
-  title: "東莞集運收貨倉庫地址",
+  title: "倉庫與包裝｜大件收貨規範與木架加固",
   description:
-    "鯨魚海運東莞虎門收貨倉地址與填寫方式。淘寶、天貓、京東、拼多多下單時填寫倉庫地址並註明專屬編號，包裹入庫後即可安排合箱集運到台灣。",
+    "海兔集運大件倉收貨規範與包裝方式：收件人填寫方式、超大超重件預約卸貨、到倉拍照，以及氣泡護角、木架加固與拆件分裝的選擇。",
 });
 
 export default function WarehousePage() {
-  const rows = [
-    ["收件人", warehouseInfo.receiverHint],
-    ["省份", warehouseInfo.province],
-    ["城市", warehouseInfo.city],
-    ["區鎮", warehouseInfo.district],
-    ["詳細地址", warehouseInfo.detail],
-    ["電話", warehouseInfo.phone],
-    ["郵編", warehouseInfo.postcode],
-  ];
+  const address = [warehouseInfo.province, warehouseInfo.city, warehouseInfo.district, warehouseInfo.detail]
+    .filter(Boolean)
+    .join("");
 
   return (
     <>
-      <PageHero
-        eyebrow="Warehouse"
-        title="收貨倉庫"
-        description="將電商平台的收件信息填寫為鯨魚海運提供的倉庫地址，並在收件人後註明您的專屬編號。"
+      <PageIntro
+        label="倉庫與包裝"
+        title="大件到倉後，我們會先做這些事"
+        lead="確認收貨、拍照驗貨、選擇包裝，再安排裝櫃。倉庫地址請向客服索取，並附上您的專屬編號。"
       />
 
-      <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr]">
-          <div className="soft-panel rounded-2xl p-6 md:p-8">
-            <h2 className="font-display text-2xl text-ocean-900">{warehouseInfo.name}</h2>
-            <dl className="mt-6 space-y-4">
-              {rows.map(([label, value]) => (
-                <div
-                  key={label}
-                  className="grid gap-1 border-b border-mist-200 pb-3 sm:grid-cols-[100px_1fr] sm:gap-4"
-                >
-                  <dt className="text-sm text-ink-muted">{label}</dt>
-                  <dd className="text-sm font-medium text-ocean-900 sm:text-base">{value}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
+      <section className="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:px-6 lg:grid-cols-2">
+        <div className="card rounded-2xl p-6 md:p-8">
+          <h2 className="heading text-xl text-char-950">{warehouseInfo.name}</h2>
+          <dl className="mt-5 space-y-4 text-sm">
+            <div>
+              <dt className="text-ink-soft">收件人寫法</dt>
+              <dd className="heading mt-1 text-lg text-ember-600">{warehouseInfo.receiverHint}</dd>
+            </div>
+            <div>
+              <dt className="text-ink-soft">倉庫地址</dt>
+              <dd className="mt-1 text-char-950">{address || "確認報價後由客服提供"}</dd>
+            </div>
+            {warehouseInfo.phone ? (
+              <div>
+                <dt className="text-ink-soft">倉庫電話</dt>
+                <dd className="mt-1 text-char-950">{warehouseInfo.phone}</dd>
+              </div>
+            ) : null}
+          </dl>
+        </div>
 
-          <aside>
-            <h2 className="font-display text-2xl text-ocean-900">填寫注意</h2>
-            <ul className="mt-5 space-y-4">
-              {warehouseInfo.tips.map((tip) => (
-                <li key={tip} className="text-sm leading-relaxed text-ink-muted">
-                  · {tip}
-                </li>
-              ))}
-            </ul>
-          </aside>
+        <div>
+          <h2 className="heading ember-bar text-xl text-char-950">收貨規範</h2>
+          <ol className="mt-5 space-y-4">
+            {warehouseInfo.rules.map((rule, index) => (
+              <li key={rule} className="flex gap-3 text-sm leading-relaxed text-ink">
+                <span className="heading text-ember-500">{index + 1}.</span>
+                {rule}
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
-      <CtaBanner
-        title="地址填好了，下一步去預報"
-        description="包裹寄出後請將快遞單號發給客服登記，加快入庫匹配。"
-        primaryHref="/process"
-        primaryLabel="查看集運流程"
-        secondaryHref="/contact"
-        secondaryLabel="聯繫客服"
-      />
+      <section className="bg-sand-100">
+        <div className="mx-auto max-w-6xl px-4 py-14 md:px-6">
+          <h2 className="heading ember-bar text-xl text-char-950 md:text-2xl">三種包裝方式</h2>
+          <div className="mt-6 grid gap-4 md:grid-cols-3">
+            {warehouseInfo.packing.map((pack) => (
+              <article key={pack.title} className="card rounded-2xl p-6">
+                <h3 className="heading text-lg text-char-950">{pack.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-ink-soft">{pack.desc}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <QuoteBand title="不知道該選哪種包裝？" text="傳照片給客服，我們依材質與尺寸建議最合適的包法。" />
     </>
   );
 }

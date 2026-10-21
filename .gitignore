@@ -20,6 +20,8 @@
 # production
 /build
 /haiyun-site.zip
+/whale-site.zip
+/haitu-site.zip
 
 # misc
 .DS_Store

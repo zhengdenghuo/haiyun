@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { CtaBanner } from "@/components/CtaBanner";
-import { PageHero } from "@/components/PageHero";
+import { PageIntro } from "@/components/PageIntro";
+import { QuoteBand } from "@/components/QuoteBand";
 import { articles, getArticle } from "@/lib/articles";
 import { ogImage, pageMetadata } from "@/lib/seo";
 import { site } from "@/lib/site";
@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "首頁", item: `${site.url}/` },
-          { "@type": "ListItem", position: 2, name: "集運知識", item: `${site.url}/articles/` },
+          { "@type": "ListItem", position: 2, name: "大件知識", item: `${site.url}/articles/` },
           { "@type": "ListItem", position: 3, name: article.title, item: url },
         ],
       },
@@ -75,83 +75,75 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }}
       />
-      <PageHero eyebrow="Knowledge" title={article.title} description={article.excerpt} />
-
-      <article className="mx-auto max-w-3xl px-4 py-14 md:px-6">
-        <nav className="text-sm text-ink-muted" aria-label="麵包屑">
-          <Link href="/" className="hover:text-sea-500">
-            首頁
-          </Link>
-          <span className="mx-2">/</span>
-          <Link href="/articles" className="hover:text-sea-500">
-            集運知識
-          </Link>
-        </nav>
-        <time dateTime={article.publishedAt} className="mt-2 block text-xs text-ink-muted">
-          發布日期：{article.publishedAt}
-        </time>
-
-        <div className="mt-10 space-y-12">
-          {article.sections.map((section) => {
-            const List = section.ordered ? "ol" : "ul";
-            return (
-              <section key={section.heading}>
-                <h2 className="font-display text-2xl text-ocean-900 md:text-3xl">{section.heading}</h2>
-                {section.paragraphs?.map((text) => (
-                  <p key={text} className="mt-4 leading-relaxed text-ink-muted">
-                    {text}
-                  </p>
-                ))}
-                {section.list ? (
-                  <List
-                    className={`mt-4 space-y-3 pl-5 leading-relaxed text-ink-muted ${
-                      section.ordered ? "list-decimal" : "list-disc"
-                    }`}
-                  >
-                    {section.list.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </List>
-                ) : null}
-              </section>
-            );
-          })}
-        </div>
-
-        <aside className="soft-panel mt-14 rounded-2xl p-6">
-          <h2 className="text-lg font-medium text-ocean-900">延伸閱讀</h2>
-          <ul className="mt-4 flex flex-wrap gap-3">
-            {article.related.map((link) => (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className="inline-block rounded-md border border-mist-200 bg-white px-3 py-1.5 text-sm text-ocean-800 transition hover:border-sea-300"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </aside>
-
-        <section className="mt-12">
-          <h2 className="text-lg font-medium text-ocean-900">更多集運知識</h2>
-          <ul className="mt-4 space-y-3">
-            {others.map((item) => (
-              <li key={item.slug}>
-                <Link href={`/articles/${item.slug}`} className="text-sea-500 hover:underline">
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </article>
-
-      <CtaBanner
-        title="還有其他問題？"
-        description="把商品連結、重量尺寸或目的地發給客服，我們會直接幫你評估。"
+      <PageIntro
+        label="本文"
+        title={article.title}
+        lead={article.excerpt}
+        crumbs={[{ href: "/articles", label: "大件知識" }]}
       />
+
+      <div className="mx-auto grid max-w-6xl gap-12 px-4 py-14 md:px-6 lg:grid-cols-[1fr_280px]">
+        <article>
+          <time dateTime={article.publishedAt} className="text-xs text-ink-soft">
+            發布日期：{article.publishedAt}
+          </time>
+          <div className="mt-6 space-y-10">
+            {article.sections.map((section) => {
+              const List = section.ordered ? "ol" : "ul";
+              return (
+                <section key={section.heading}>
+                  <h2 className="heading ember-bar text-xl text-char-950 md:text-2xl">{section.heading}</h2>
+                  {section.paragraphs?.map((text) => (
+                    <p key={text} className="mt-4 leading-loose text-ink">
+                      {text}
+                    </p>
+                  ))}
+                  {section.list ? (
+                    <List
+                      className={`mt-4 space-y-2.5 pl-5 leading-relaxed text-ink ${
+                        section.ordered ? "list-decimal" : "list-disc"
+                      }`}
+                    >
+                      {section.list.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </List>
+                  ) : null}
+                </section>
+              );
+            })}
+          </div>
+        </article>
+
+        <aside className="space-y-6 lg:sticky lg:top-32 lg:self-start">
+          <div className="card rounded-2xl p-5">
+            <h2 className="text-sm font-semibold text-ember-600">相關頁面</h2>
+            <ul className="mt-3 space-y-2">
+              {article.related.map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-char-950 hover:text-ember-600">
+                    → {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="card rounded-2xl p-5">
+            <h2 className="text-sm font-semibold text-ember-600">其他文章</h2>
+            <ul className="mt-3 space-y-3">
+              {others.map((item) => (
+                <li key={item.slug}>
+                  <Link href={`/articles/${item.slug}`} className="text-sm leading-snug text-char-950 hover:text-ember-600">
+                    {item.title}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </aside>
+      </div>
+
+      <QuoteBand title="看完還是不確定？" text="把你的品項和尺寸傳給客服，直接幫你算、幫你規劃。" />
     </>
   );
 }
