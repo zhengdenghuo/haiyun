@@ -1,0 +1,27 @@
+2:"$Sreact.fragment"
+3:"/_next/static/chunks/1plk-wjtnt0an.js"
+4:I[39756,["$3"],"default"]
+5:I[37457,["$3"],"default"]
+a:"/_next/static/chunks/170u9txykxip1.js"
+b:I[22970,["$3","$a"],"EstimateTool"]
+c:I[97367,["$3"],"OutletBoundary"]
+d:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[97367,["$3"],"$10"]
+12:"MetadataBoundary"
+13:I[97367,["$3"],"$12"]
+14:I[27201,["$3"],"IconMark"]
+7:X
+7:C
+8:X
+9:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[[["$","section",null,{"className":"relative overflow-hidden bg-ocean-900 text-foam","children":[["$","div",null,{"className":"pointer-events-none absolute inset-0 opacity-40","style":{"background":"radial-gradient(ellipse 60% 50% at 80% 0%, rgba(42,168,154,0.35), transparent 55%)"}}],["$","div",null,{"className":"relative mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20","children":[["$","p",null,{"className":"animate-rise text-xs tracking-[0.22em] text-sea-300 uppercase","children":"Estimate"}],["$","h1",null,{"className":"animate-rise-delay-1 mt-3 font-display text-4xl tracking-wide md:text-5xl","children":"運費估算"}],["$","p",null,{"className":"animate-rise-delay-2 mt-4 max-w-2xl text-base leading-relaxed text-foam/75 md:text-lg","children":"輸入重量與三邊尺寸，按參考單價粗算。正式賬單以倉庫複核的計費重為準。"}]]}],["$","div",null,{"className":"wave-divider h-10 w-full bg-foam md:h-12","aria-hidden":true}]]}],["$","section",null,{"className":"mx-auto max-w-3xl px-4 py-14 md:px-6","children":["$","$Lb",null,{}]}]],[["$","script","script-0",{"src":"/_next/static/chunks/170u9txykxip1.js","async":true}]],["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$8"}}]]
+1:[["children",{"s":"estimate","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L4",null,{"parallelRouterKey":"children","template":["$","$L5",null,{}]}]]}],"p":"$@6","v":"$7","s":"$8"},"c":"$Q9"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[null,["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"台灣集運運費試算｜海運、空運運費計算｜鯨魚海運"}],["$","meta","1",{"name":"description","content":"輸入包裹重量與長寬高，即時估算大陸寄台灣海運家具、海快與空運集運運費，海運按重量與材積較高者、海快與空運按半拋計算。"}],["$","meta","2",{"name":"application-name","content":"鯨魚海運"}],["$","meta","3",{"name":"robots","content":"index, follow"}],["$","link","4",{"rel":"canonical","href":"http://127.0.0.1:3847/estimate/"}],["$","meta","5",{"property":"og:title","content":"台灣集運運費試算｜海運、空運運費計算｜鯨魚海運"}],["$","meta","6",{"property":"og:description","content":"輸入包裹重量與長寬高，即時估算大陸寄台灣海運家具、海快與空運集運運費，海運按重量與材積較高者、海快與空運按半拋計算。"}],["$","meta","7",{"property":"og:url","content":"http://127.0.0.1:3847/estimate/"}],["$","meta","8",{"property":"og:site_name","content":"鯨魚海運"}],["$","meta","9",{"property":"og:locale","content":"zh_TW"}],["$","meta","10",{"property":"og:image","content":"http://127.0.0.1:3847/og-image.png"}],["$","meta","11",{"property":"og:image:width","content":"1200"}],["$","meta","12",{"property":"og:image:height","content":"630"}],["$","meta","13",{"property":"og:image:alt","content":"鯨魚海運｜台灣集運・大陸寄台灣海運專線"}],["$","meta","14",{"property":"og:type","content":"website"}],["$","meta","15",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","16",{"name":"twitter:title","content":"台灣集運運費試算｜海運、空運運費計算｜鯨魚海運"}],["$","meta","17",{"name":"twitter:description","content":"輸入包裹重量與長寬高，即時估算大陸寄台灣海運家具、海快與空運集運運費，海運按重量與材積較高者、海快與空運按半拋計算。"}],["$","meta","18",{"name":"twitter:image","content":"http://127.0.0.1:3847/og-image.png"}],["$","link","19",{"rel":"icon","href":"/favicon.ico?favicon.42dunxd3x7vqm.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","20",{"rel":"icon","href":"/icon.png?icon.134txs5gwrf4t.png","sizes":"512x512","type":"image/png"}],["$","link","21",{"rel":"apple-touch-icon","href":"/apple-icon.png?apple-icon.07r-iv01i02x2.png","sizes":"180x180","type":"image/png"}],["$","$L14","22",{}]]}]}],null]}],null]}],"p":"$@15","v":null,"s":"$8"}},"a":"$@16","u":"$@17","b":"mttje0hj16tW2faFw3J7w"}
+e:null
+17:true
+8:300
+8:C
+16:0
+6:"$undefined"
+15:"$undefined"
+f:"$undefined"

@@ -6,13 +6,13 @@ export const site = {
   name: "鯨魚海運",
   englishName: "Whale Ocean Shipping",
   tagline: "跨境集運，穩妥到家",
-  phone: "15280164581",
+  phone: "15280401175",
   hours: "工作日 9:00–21:00",
   email: "806251069@qq.com",
   wechat: "zdh19330418",
   line: "https://lin.ee/4y43hZh",
   lineQr: `${basePath}/line-qr.png`,
-  address: "廣東省東莞市虎門鎮龍眼八路38號",
+  address: "广东省东莞市虎门镇龙眼八路38号",
   icp: "",
 };
 
@@ -148,11 +148,11 @@ export const addOnFees = [
 export const warehouseInfo = {
   name: "鯨魚海運 · 東莞虎門倉",
   receiverHint: "鯨魚海運轉（您的專屬編號）",
-  province: "廣東省",
-  city: "東莞市",
-  district: "虎門鎮",
-  detail: "龍眼八路38號",
-  phone: "15280164581",
+  province: "广东省",
+  city: "东莞市",
+  district: "虎门镇",
+  detail: "龙眼八路38号",
+  phone: "15280401175",
   postcode: "523900",
   tips: [
     "請務必在收件人姓名後註明專屬編號，便於自動匹配入庫。",
