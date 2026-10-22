@@ -17,7 +17,7 @@ export default function ArticlesPage() {
     <>
       <PageHero
         eyebrow="Knowledge"
-        title="集運知識"
+        title="集運知識：運費、違禁品、清關與實名認證"
         description="整理台灣客戶最常問的集運問題，從下單、運費到清關，寄之前先看一看。"
       />
 

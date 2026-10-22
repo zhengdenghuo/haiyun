@@ -6,7 +6,7 @@ import { aboutStats, promises, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/about",
-  title: "關於鯨魚海運｜東莞虎門台灣集運倉",
+  title: "東莞虎門台灣集運倉｜關於鯨魚海運",
   description:
     "鯨魚海運紮根珠三角倉配網絡，專注大陸至台灣、港澳及東南亞的跨境集運，強調計費透明、軌跡可查與專屬客服跟進。",
 });
@@ -16,7 +16,7 @@ export default function AboutPage() {
     <>
       <PageHero
         eyebrow="About"
-        title={`關於${site.name}`}
+        title={`關於${site.name}：東莞虎門台灣集運倉`}
         description="我們相信跨境物流不必神秘：地址清晰、費用可預期、異常有人跟。鯨魚海運把倉配與幹線串成一條可理解的服務。"
       />
 

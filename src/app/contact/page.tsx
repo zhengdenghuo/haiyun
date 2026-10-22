@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/contact",
-  title: "聯繫我們｜集運客服諮詢",
+  title: "集運客服諮詢｜電話、微信與 LINE 聯繫方式",
   description:
     "聯繫鯨魚海運客服：電話、微信、LINE 與電子郵件，諮詢台灣集運線路、報價或包裹異常，也可直接線上留言。",
 });
@@ -17,7 +17,7 @@ export default function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="聯繫我們"
+        title="聯繫我們：集運客服諮詢"
         description="諮詢線路、報價或異常件跟進，歡迎通過電話、即時通訊或下方表單留言。"
       />
 

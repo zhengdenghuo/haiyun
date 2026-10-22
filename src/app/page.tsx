@@ -7,7 +7,7 @@ import { aboutStats, pricingRows, processSteps, services, site } from "@/lib/sit
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
-  title: `${site.name}｜台灣集運・大陸寄台灣海運專線`,
+  title: `大陸寄台灣集運｜海運・海快・空運專線｜${site.name}`,
   description:
     "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
   absoluteTitle: true,
@@ -19,9 +19,43 @@ const heroHighlights = [
   { title: "專人跟進", desc: "電話、微信、LINE 都能聯繫" },
 ];
 
+const faqs = [
+  {
+    q: "大陸寄台灣的運費怎麼算？",
+    a: "海運家具按重量與材積兩者中較高者計費，參考價 ¥4.5/kg 起、¥25/材 起；海快與空運按「半拋」計算，參考價分別為 ¥10/kg 起與 ¥25/kg 起。實際費用以倉庫測量後的計價重與客服報價為準。",
+  },
+  {
+    q: "集運到台灣要多久？",
+    a: "海運約 10–12 個工作日，海快約 3–6 個工作日，空運普貨約 2–4 個工作日。以上為幹線參考時效，不含大陸境內快遞到倉時間與海關查驗。",
+  },
+  {
+    q: "哪些東西不能寄到台灣？",
+    a: "武器彈藥、毒品、活體動植物、淫穢物品與仿冒侵權商品一律禁運。含鋰電池的設備、液體化妝品與粉末保健品屬於限制品，須事先向客服申報並經審核後才能寄送。",
+  },
+  {
+    q: "包裹寄到倉庫後，怎麼知道進度？",
+    a: "店家出貨後把快遞單號發給客服預報，入庫、合箱、出庫、幹線、清關到派送等關鍵節點都會同步更新，也可隨時透過電話或 LINE 向客服查詢。",
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  inLanguage: "zh-TW",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
+
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c") }}
+      />
       <section className="hero-atmosphere relative overflow-hidden text-foam">
         <div className="animate-drift pointer-events-none absolute -left-16 top-24 h-64 w-64 rounded-full bg-sea-400/15 blur-3xl" />
         <div className="animate-drift pointer-events-none absolute right-0 top-10 h-72 w-72 rounded-full bg-ocean-700/40 blur-3xl [animation-delay:2s]" />
@@ -32,9 +66,9 @@ export default function HomePage() {
               {site.englishName}
             </p>
             <h1 className="animate-rise-delay-1 mt-4 font-display text-5xl leading-tight tracking-wide md:text-6xl lg:text-7xl">
-              {site.name}
+              大陸寄台灣集運
               <span className="mt-3 block text-xl tracking-normal text-sea-300 sm:text-2xl lg:text-3xl">
-                台灣集運・大陸寄台灣海運專線
+                海運・海快・空運專線｜淘寶拼多多合箱到府
               </span>
             </h1>
             <p className="animate-rise-delay-2 mt-5 max-w-xl text-lg text-foam/75 md:text-xl">
@@ -99,7 +133,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
         <SectionHeading
           eyebrow="服務線路"
-          title="為跨境買家與小微賣家準備的集運方案"
+          title="台灣集運線路：海運、海快、空運怎麼選"
           description="從珠三角收貨到目的地簽收，按貨物屬性選擇海運、海快或空運。"
         />
         <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -126,7 +160,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <SectionHeading
             eyebrow="六步完成"
-            title="集運流程一目瞭然"
+            title="大陸寄台灣集運流程：六步完成"
             description="溝通、寄倉、預報、合箱、支付、簽收——每一步都有站內指引。"
           />
           <ol className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -151,7 +185,7 @@ export default function HomePage() {
           <div>
             <p className="text-xs tracking-[0.22em] text-sea-500 uppercase">關於鯨魚</p>
             <h2 className="mt-3 font-display text-3xl text-ocean-900 md:text-4xl">
-              把複雜的跨境物流，做成可預期的日常服務
+              大陸集運到台灣，為什麼選{site.name}
             </h2>
             <p className="mt-4 text-ink-muted leading-relaxed">
               {site.name}
@@ -179,7 +213,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <SectionHeading
             eyebrow="集運知識"
-            title="寄之前，先看這幾篇"
+            title="集運運費、違禁品與清關教學"
             description="運費怎麼算、哪些東西不能寄、怎麼完成實名認證，常見問題一次整理。"
           />
           <ul className="mt-10 grid gap-5 md:grid-cols-3">
@@ -203,6 +237,22 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
+        <SectionHeading
+          eyebrow="常見問題"
+          title="大陸寄台灣集運常見問題"
+          description="運費、時效、禁運品與進度查詢，客服最常被問到的四個問題。"
+        />
+        <dl className="mt-10 grid gap-5 md:grid-cols-2">
+          {faqs.map((item) => (
+            <div key={item.q} className="soft-panel rounded-xl p-6">
+              <dt className="font-medium text-ocean-900">{item.q}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-ink-muted">{item.a}</dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       <CtaBanner

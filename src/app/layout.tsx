@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@/components/Analytics";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ogImage } from "@/lib/seo";
@@ -34,7 +35,19 @@ const websiteJsonLd = {
   alternateName: site.englishName,
   url: `${site.url}/`,
   inLanguage: "zh-TW",
-  publisher: { "@id": `${site.url}/#business` },
+  publisher: { "@id": `${site.url}/#organization` },
+};
+
+const organizationJsonLd = {
+  "@type": "Organization",
+  "@id": `${site.url}/#organization`,
+  name: site.name,
+  alternateName: site.englishName,
+  url: `${site.url}/`,
+  logo: `${site.url}/icon.png`,
+  email: site.email,
+  telephone: `+86-${site.phone}`,
+  sameAs: [site.line],
 };
 
 const businessJsonLd = {
@@ -63,7 +76,7 @@ const businessJsonLd = {
 
 const siteJsonLd = {
   "@context": "https://schema.org",
-  "@graph": [websiteJsonLd, businessJsonLd],
+  "@graph": [websiteJsonLd, organizationJsonLd, businessJsonLd],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -82,6 +95,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );

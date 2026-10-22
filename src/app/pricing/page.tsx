@@ -7,9 +7,9 @@ import { addOnFees, pricingRows } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/pricing",
-  title: "集運收費標準｜台灣海運、空運運費",
+  title: "集運收費標準｜台灣海運、海快、空運運費",
   description:
-    "台灣集運運費怎麼算？海運家具、海快、空運每公斤單價與參考時效一覽，附材積與半拋計算方式，以及加固、拍照、保價等增值服務費用。",
+    "台灣集運運費怎麼算？海運家具、海快、空運每公斤單價與參考時效一覽，附材積與半拋計算方式，以及加固、拍照等增值服務費用。",
 });
 
 export default function PricingPage() {
@@ -17,7 +17,7 @@ export default function PricingPage() {
     <>
       <PageHero
         eyebrow="Pricing"
-        title="收費標準"
+        title="集運收費標準：台灣海運、海快、空運運費"
         description="以下為參考價，實際以倉庫測量與當期線路公告為準。海運家具按重量與材積較高者計費，海快、空運按半拋計算。"
       />
 

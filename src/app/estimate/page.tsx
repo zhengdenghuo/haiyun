@@ -15,7 +15,7 @@ export default function EstimatePage() {
     <>
       <PageHero
         eyebrow="Estimate"
-        title="運費估算"
+        title="台灣集運運費估算"
         description="輸入重量與三邊尺寸，按參考單價粗算。正式賬單以倉庫複核的計費重為準。"
       />
       <section className="mx-auto max-w-3xl px-4 py-14 md:px-6">

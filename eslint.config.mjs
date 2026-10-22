@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // 部署目錄（建置產物副本），不參與 lint
+    "haiyun/**",
   ]),
 ]);
 

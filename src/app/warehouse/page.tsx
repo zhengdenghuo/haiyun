@@ -26,7 +26,7 @@ export default function WarehousePage() {
     <>
       <PageHero
         eyebrow="Warehouse"
-        title="收貨倉庫"
+        title="東莞虎門集運收貨倉庫"
         description="將電商平台的收件信息填寫為鯨魚海運提供的倉庫地址，並在收件人後註明您的專屬編號。"
       />
 

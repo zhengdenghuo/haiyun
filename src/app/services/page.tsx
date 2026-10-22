@@ -16,7 +16,7 @@ export default function ServicesPage() {
     <>
       <PageHero
         eyebrow="Services"
-        title="集運服務介紹"
+        title="台灣集運服務：海運、海快、空運專線"
         description="鯨魚海運提供合箱集運、海運空運專線與增值倉內服務。按目的地與貨性選擇合適通道，減少拆單煩惱。"
       />
 

@@ -16,7 +16,7 @@ export default function GuidePage() {
     <>
       <PageHero
         eyebrow="Guide"
-        title="集運須知"
+        title="集運須知：違禁品、清關與打包說明"
         description="下單、打包、清關與違禁說明集中在此。首次集運建議通讀違禁品一節，避免無法出庫。"
       />
 

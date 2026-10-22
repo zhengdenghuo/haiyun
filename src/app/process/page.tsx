@@ -17,7 +17,7 @@ export default function ProcessPage() {
     <>
       <PageHero
         eyebrow="Process"
-        title="集運流程"
+        title="大陸寄台灣集運流程"
         description="從溝通到簽收共六步。首次使用建議先向客服確認線路，並了解體積重計費規則。"
       />
 

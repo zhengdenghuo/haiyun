@@ -1,7 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
-import { CM3_PER_CAI, VOLUME_DIVISOR, halfVolumeWeight } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
+import { CM3_PER_CAI, VOLUME_DIVISOR, halfVolumeWeight, site } from "@/lib/site";
 
 const lanes = [
   { id: "sea", label: "台灣海運 · 家具", perKg: 4.5, perCai: 25 },
@@ -79,6 +81,21 @@ export function EstimateTool() {
           <Stat key={stat.label} label={stat.label} value={stat.value} />
         ))}
         <Stat label="估算運費" value={`約 ¥${result.estimate}`} highlight />
+      </div>
+
+      <div className="mt-5 flex flex-wrap items-center gap-4">
+        <a
+          href={site.line}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackEvent("estimate_to_contact", { lane: laneId, estimate: result.estimate })}
+          className="rounded-md bg-sea-500 px-5 py-2.5 text-sm font-medium text-white transition hover:bg-sea-400"
+        >
+          把尺寸傳給客服，取得正式報價
+        </a>
+        <Link href="/contact" className="text-sm text-sea-500 hover:underline">
+          其他聯繫方式 →
+        </Link>
       </div>
     </div>
   );
