@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1 --port 3847",
-    "build": "next build",
+    "build": "node scripts/build.mjs whale",
     "postbuild": "node scripts/write-contact-config.mjs",
     "start": "next start --hostname 127.0.0.1 --port 3847",
     "lint": "eslint"
