@@ -93,7 +93,7 @@ export default function PricingPage() {
           </table>
         </div>
         <ul className="mt-6 space-y-1.5 text-sm text-ink-soft">
-          <li>・ 所有貨物依實際品名與貨值申報；海快線路不包稅，如需繳稅由收件人依台灣海關規定繳納。</li>
+          <li>・ 所有貨物依實際品名申報；海快線路不包稅，如需繳稅由收件人依台灣海關規定繳納。</li>
           <li>・ 以上為參考價，正式費用以倉庫實際量測與客服報價為準。</li>
         </ul>
       </section>

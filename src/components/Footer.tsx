@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LineAddFriendButton } from "@/components/LineAddFriendButton";
 import { footerLinks, site } from "@/lib/site";
 
 export function Footer() {
@@ -11,7 +12,7 @@ export function Footer() {
   return (
     <footer className="mt-auto border-t-4 border-ember-500 bg-char-950 text-sand-200">
       <div className="mx-auto max-w-6xl px-4 py-12 md:px-6">
-        <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
+        <div className="grid gap-10 lg:grid-cols-[0.95fr_0.9fr_1fr] lg:items-start">
           <div className="max-w-sm">
             <p className="heading text-2xl text-white">{site.name}</p>
             <p className="mt-2 text-sm text-sand-300">{site.tagline}</p>
@@ -36,7 +37,34 @@ export function Footer() {
                 線上留言估價
               </Link>
             )}
+            <div className="mt-4">
+              <LineAddFriendButton href={site.line} />
+            </div>
             <p className="mt-3 text-xs text-sand-300">服務時間：{site.hours}</p>
+          </div>
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.03] p-6">
+            <p className="text-xs font-semibold tracking-widest text-ember-400">淘寶店</p>
+            <h3 className="heading mt-3 text-xl text-white">直接進店看商品與服務</h3>
+            <p className="mt-2 text-sm leading-relaxed text-sand-300">
+              想先逛店鋪、看服務內容或直接下單，可以從這裡進入淘寶店。
+            </p>
+            <a
+              href={site.taobaoShop}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-4 block break-all text-sm font-semibold text-white hover:text-ember-400"
+            >
+              {site.taobaoShop}
+            </a>
+            <a
+              href={site.taobaoShop}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex rounded-full bg-ember-500 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-ember-600"
+            >
+              前往淘寶店
+            </a>
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">

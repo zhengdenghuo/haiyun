@@ -13,10 +13,10 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const prepare: Record<string, string> = {
-  "01": "準備：商品連結、包裝尺寸、送貨地址與樓層",
+  "01": "準備：商品連結、包裝尺寸和重量、送貨地址與樓層",
   "02": "準備：收件人填「海兔集運＋專屬編號」",
   "03": "確認：到倉照片、是否加購木架加固",
-  "04": "確認：品名、數量與貨值如實申報",
+  "04": "確認：品名、數量如實申報",
   "05": "確認：送貨時間、電梯與搬運動線",
 };
 
@@ -59,7 +59,7 @@ export default function ProcessPage() {
         </div>
       </section>
 
-      <QuoteBand title="準備好第一步了嗎？" text="先把商品連結與尺寸傳給客服，估價不收費。" />
+      <QuoteBand title="準備好第一步了嗎？" text="先把商品連結、包裝尺寸和重量傳給客服，估價不收費。" />
     </>
   );
 }

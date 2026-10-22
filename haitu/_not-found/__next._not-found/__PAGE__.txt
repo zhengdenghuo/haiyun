@@ -1,0 +1,27 @@
+2:"$Sreact.fragment"
+3:"/_next/static/chunks/0umf92h1sb77c.js"
+4:"/_next/static/chunks/1dvtwd05219na.js"
+5:I[39756,["$3","$4"],"default"]
+6:I[37457,["$3","$4"],"default"]
+b:I[22016,["$3","$4"],""]
+c:I[97367,["$3","$4"],"OutletBoundary"]
+d:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[97367,["$3","$4"],"$10"]
+12:"MetadataBoundary"
+13:I[97367,["$3","$4"],"$12"]
+14:I[27201,["$3","$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","section",null,{"className":"grid-paper","children":["$","div",null,{"className":"mx-auto max-w-3xl px-4 py-24 md:px-6","children":[["$","p",null,{"className":"heading text-7xl text-ember-500","children":"404"}],["$","h1",null,{"className":"heading mt-4 text-3xl text-char-950","children":"這個頁面不存在"}],["$","p",null,{"className":"mt-3 text-ink-soft","children":"網址可能有誤或已移除，可以從下面的入口繼續。"}],["$","ul",null,{"className":"mt-8 flex flex-wrap gap-3","children":[["$","li","/",{"children":["$","$Lb",null,{"href":"/","className":"inline-block rounded-full border-2 border-char-900 px-4 py-2 text-sm font-semibold text-char-900 hover:bg-char-900 hover:text-white","children":"首頁"}]}],["$","li","/services",{"children":["$","$Lb",null,{"href":"/services","className":"inline-block rounded-full border-2 border-char-900 px-4 py-2 text-sm font-semibold text-char-900 hover:bg-char-900 hover:text-white","children":"大件服務"}]}],["$","li","/estimate",{"children":["$","$Lb",null,{"href":"/estimate","className":"inline-block rounded-full border-2 border-char-900 px-4 py-2 text-sm font-semibold text-char-900 hover:bg-char-900 hover:text-white","children":"才數試算"}]}],["$","li","/articles",{"children":["$","$Lb",null,{"href":"/articles","className":"inline-block rounded-full border-2 border-char-900 px-4 py-2 text-sm font-semibold text-char-900 hover:bg-char-900 hover:text-white","children":"大件知識"}]}],["$","li","/contact",{"children":["$","$Lb",null,{"href":"/contact","className":"inline-block rounded-full border-2 border-char-900 px-4 py-2 text-sm font-semibold text-char-900 hover:bg-char-900 hover:text-white","children":"免費估價"}]}]]}]]}]}],null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$9"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"頁面不存在｜海兔集運"}],["$","meta","1",{"name":"description","content":"海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機與裝修建材，依才數計價，木架加固、送貨上樓、到府組裝一次安排。"}],["$","meta","2",{"name":"application-name","content":"海兔集運"}],["$","meta","3",{"name":"robots","content":"index, follow"}],["$","meta","4",{"property":"og:title","content":"頁面不存在｜海兔集運"}],["$","meta","5",{"property":"og:description","content":"海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機與裝修建材，依才數計價，木架加固、送貨上樓、到府組裝一次安排。"}],["$","meta","6",{"property":"og:site_name","content":"海兔集運"}],["$","meta","7",{"property":"og:locale","content":"zh_TW"}],["$","meta","8",{"property":"og:image","content":"http://127.0.0.1:3847/og-image.png"}],["$","meta","9",{"property":"og:image:width","content":"1200"}],["$","meta","10",{"property":"og:image:height","content":"630"}],["$","meta","11",{"property":"og:image:alt","content":"海兔集運｜家具・家電・建材大件寄台灣"}],["$","meta","12",{"property":"og:type","content":"website"}],["$","meta","13",{"name":"twitter:card","content":"summary_large_image"}],["$","meta","14",{"name":"twitter:title","content":"頁面不存在｜海兔集運"}],["$","meta","15",{"name":"twitter:description","content":"海兔集運專做大件寄台灣：沙發、床架、冰箱、洗衣機與裝修建材，依才數計價，木架加固、送貨上樓、到府組裝一次安排。"}],["$","meta","16",{"name":"twitter:image","content":"http://127.0.0.1:3847/og-image.png"}],["$","link","17",{"rel":"icon","href":"/favicon.ico?favicon.3bgrn010bb2nt.ico","sizes":"48x48","type":"image/x-icon"}],["$","link","18",{"rel":"icon","href":"/icon.png?icon.3lg8a9wv8y9i6.png","sizes":"512x512","type":"image/png"}],["$","link","19",{"rel":"apple-touch-icon","href":"/apple-icon.png?apple-icon.3bd19oqa1otk-.png","sizes":"180x180","type":"image/png"}],["$","$L14","20",{}]]}]}],null]}],null]}],"p":"$@15","v":null,"s":"$9"}},"a":"$@16","u":"$@17","b":"OWb8MDVJrpkrxCsiMd5CB"}
+e:null
+17:true
+9:300
+9:C
+16:0
+7:"$undefined"
+15:"$undefined"
+f:"$undefined"
