@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
 
 const quoteNeeds = [
   { title: "商品連結或照片", desc: "淘寶、天貓、京東等連結都可以" },
-  { title: "包裝後的長寬高", desc: "不確定可先給商品尺寸" },
+  { title: "包裝後的長寬高與重量", desc: "不確定可先給商品尺寸與重量" },
   { title: "送貨地址與樓層", desc: "有無電梯、是否需要組裝" },
 ];
 
@@ -41,7 +41,7 @@ export default function HomePage() {
               </span>
             </h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-ink-soft">
-              沙發、床架、冰箱到裝修建材，從大陸倉驗貨包裝、海運清關，一路送到台灣家門口。
+              沙發、床架、電器或大型機械設備，從大陸倉驗貨包裝、海運清關，一路送到台灣家門口。
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
@@ -78,7 +78,7 @@ export default function HomePage() {
               href="/contact"
               className="mt-7 block rounded-xl bg-paper py-3 text-center text-sm font-semibold text-char-950 transition hover:bg-sand-100"
             >
-              傳給客服估價 →
+              聯繫客服預估 →
             </Link>
           </div>
         </div>
@@ -86,7 +86,7 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
         <h2 className="heading ember-bar text-2xl text-char-950 md:text-3xl">專門處理這些大件</h2>
-        <p className="mt-3 max-w-2xl text-ink-soft">不寄小包裹，只做大件。每一類都有對應的包裝與送貨方式。</p>
+        <p className="mt-3 max-w-2xl text-ink-soft">專業海運大件貨物，每一類都有對應的包裝與送貨方式。</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
             <Link
@@ -147,7 +147,7 @@ export default function HomePage() {
             <p className="mt-5 rounded-xl bg-ember-100 px-4 py-3 text-sm text-ember-600">
               海運家具每才 ¥{seaLane.perCai} 起，這張沙發材積運費約 ¥{sofaSeaCost.toLocaleString()} 起
             </p>
-            <p className="mt-3 text-xs text-ink-soft">實際費用依重量、才數與送貨條件報價。</p>
+            <p className="mt-3 text-xs text-ink-soft">聯繫客服獲取更加優惠價格。</p>
           </div>
         </div>
       </section>
