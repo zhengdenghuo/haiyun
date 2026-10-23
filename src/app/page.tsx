@@ -7,9 +7,9 @@ import { aboutStats, pricingRows, processSteps, services, site } from "@/lib/sit
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
-  title: `大陸寄台灣集運｜海運・海快・空運專線｜${site.name}`,
+  title: `大陸寄台灣集運｜淘寶海運・海快專線｜${site.name}`,
   description:
-    "鯨魚海運專營大陸寄台灣集運：家具、家電、大型設備與淘寶拼多多 1688 包裹合箱，海運、海快與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
+    "鯨魚海運專營大陸寄台灣集運：淘寶、拼多多包裹合箱，海快約 3–6 個工作日，海運家具 ¥4.5/kg 起，東莞虎門倉收貨。",
   absoluteTitle: true,
 });
 
@@ -76,7 +76,7 @@ export default function HomePage() {
             <h1 className="animate-rise-delay-1 mt-4 font-display text-5xl leading-tight tracking-wide md:text-6xl lg:text-7xl">
               大陸寄台灣集運
               <span className="mt-3 block text-xl tracking-normal text-sea-300 sm:text-2xl lg:text-3xl">
-                海運・海快・空運專線｜淘寶拼多多合箱到府
+                淘寶・拼多多合箱｜海運・海快到府
               </span>
             </h1>
             <p className="animate-rise-delay-2 mt-5 max-w-xl text-lg text-foam/75 md:text-xl">
@@ -141,9 +141,35 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
         <SectionHeading
           eyebrow="服務線路"
-          title="大陸家具、家電與大型設備寄台灣：海運、海快、空運怎麼選"
-          description="沙發、冰箱、機台與整批搬家貨，都從珠三角倉收貨、合箱加固後送到府。"
+          title="淘寶集運合箱到台灣"
+          description="淘寶、拼多多、1688 包裹寄到虎門倉，合箱後走海運、海快或空運，再派送到府。"
         />
+        <div className="mt-10 grid gap-8 md:grid-cols-2">
+          <article className="border-l-2 border-sea-400/70 pl-5">
+            <h3 className="font-display text-xl text-ocean-900">家具寄台灣</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+              沙發、床架、餐桌走海運，按重量與材積較高者計費，¥4.5/kg 起。
+            </p>
+            <Link
+              href="/articles/furniture-shipping-to-taiwan"
+              className="mt-3 inline-block text-sm font-medium text-sea-500 hover:underline"
+            >
+              看家具運送說明 →
+            </Link>
+          </article>
+          <article className="border-l-2 border-sea-400/70 pl-5">
+            <h3 className="font-display text-xl text-ocean-900">家電集運</h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink-muted">
+              冰箱、洗衣機等大件先確認能否收寄，再選海運或海快。
+            </p>
+            <Link
+              href="/articles/appliance-shipping-to-taiwan"
+              className="mt-3 inline-block text-sm font-medium text-sea-500 hover:underline"
+            >
+              看家電集運須知 →
+            </Link>
+          </article>
+        </div>
         <div className="mt-10 grid gap-8 md:grid-cols-2">
           {services.map((service) => (
             <article key={service.title} className="border-l-2 border-sea-400/70 pl-5">

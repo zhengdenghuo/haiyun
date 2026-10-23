@@ -201,8 +201,6 @@ export const guideSections = [
 ];
 
 export const aboutStats = [
-  { label: "服務客戶", value: "12 萬+" },
-  { label: "年均出庫", value: "80 萬票" },
   { label: "合作線路", value: "18 條" },
   { label: "倉配節點", value: "珠三角雙倉" },
 ];
