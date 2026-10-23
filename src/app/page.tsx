@@ -9,7 +9,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
   title: `大陸寄台灣集運｜海運・海快・空運專線｜${site.name}`,
   description:
-    "鯨魚海運提供大陸寄台灣集運服務：淘寶、拼多多、1688 包裹合箱海運、海快與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
+    "鯨魚海運專營大陸寄台灣集運：家具、家電、大型設備與淘寶拼多多 1688 包裹合箱，海運、海快與空運專線，東莞虎門倉收貨，計費透明、客服一對一跟進。",
   absoluteTitle: true,
 });
 
@@ -48,6 +48,14 @@ const faqJsonLd = {
     acceptedAnswer: { "@type": "Answer", text: item.a },
   })),
 };
+
+const featuredArticles = articles.filter((article) =>
+  [
+    "furniture-shipping-to-taiwan",
+    "appliance-shipping-to-taiwan",
+    "oversized-equipment-shipping",
+  ].includes(article.slug),
+);
 
 export default function HomePage() {
   return (
@@ -133,8 +141,8 @@ export default function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
         <SectionHeading
           eyebrow="服務線路"
-          title="台灣集運線路：海運、海快、空運怎麼選"
-          description="從珠三角收貨到目的地簽收，按貨物屬性選擇海運、海快或空運。"
+          title="大陸家具、家電與大型設備寄台灣：海運、海快、空運怎麼選"
+          description="沙發、冰箱、機台與整批搬家貨，都從珠三角倉收貨、合箱加固後送到府。"
         />
         <div className="mt-10 grid gap-8 md:grid-cols-2">
           {services.map((service) => (
@@ -185,11 +193,11 @@ export default function HomePage() {
           <div>
             <p className="text-xs tracking-[0.22em] text-sea-500 uppercase">關於鯨魚</p>
             <h2 className="mt-3 font-display text-3xl text-ocean-900 md:text-4xl">
-              大陸集運到台灣，為什麼選{site.name}
+              大件家具、家電集運到台灣，為什麼選{site.name}
             </h2>
             <p className="mt-4 text-ink-muted leading-relaxed">
               {site.name}
-              紮根珠三角倉配網絡，面向台灣、港澳及東南亞目的地提供集運合箱與專線幹線。我們強調計費透明、節點可查與人工跟進，讓個人買家與店鋪補貨都能安心託付。
+              紮根珠三角倉配網絡，面向台灣、港澳及東南亞提供集運合箱與專線幹線，其中家具、家電與大型設備等大件貨物尤其擅長。我們強調計費透明、節點可查與人工跟進，讓個人買家與店鋪補貨都能安心託付。
             </p>
             <Link
               href="/about"
