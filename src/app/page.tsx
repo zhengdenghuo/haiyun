@@ -221,11 +221,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
           <SectionHeading
             eyebrow="集運知識"
-            title="集運運費、違禁品與清關教學"
-            description="運費怎麼算、哪些東西不能寄、怎麼完成實名認證，常見問題一次整理。"
+            title="家具、家電與大型設備集運知識"
+            description="沙發、冰箱、機台怎麼寄、運費怎麼算、哪些東西不能寄，常見問題一次整理。"
           />
           <ul className="mt-10 grid gap-5 md:grid-cols-3">
-            {articles.slice(0, 3).map((article) => (
+            {featuredArticles.map((article) => (
               <li key={article.slug}>
                 <Link
                   href={`/articles/${article.slug}`}
