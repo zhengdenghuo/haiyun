@@ -55,7 +55,7 @@ function FooterColumn({
       <p className="text-sm font-medium tracking-wide text-sea-300">{title}</p>
       <ul className="mt-3 space-y-2">
         {links.map((link) => (
-          <li key={link.href + link.label}>
+          <li key={link.label}>
             <Link href={link.href} className="text-sm text-foam/70 transition hover:text-foam">
               {link.label}
             </Link>

@@ -23,7 +23,7 @@ export default function NotFound() {
       </p>
       <ul className="mt-8 flex flex-wrap justify-center gap-3">
         {shortcuts.map((item) => (
-          <li key={item.href}>
+          <li key={`shortcut-${item.label}`}>
             <Link
               href={item.href}
               className="inline-block rounded-md border border-mist-200 bg-white px-4 py-2 text-sm text-ocean-800 transition hover:border-sea-300"

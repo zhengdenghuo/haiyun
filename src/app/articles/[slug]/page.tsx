@@ -122,7 +122,7 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
           <h2 className="text-lg font-medium text-ocean-900">延伸閱讀</h2>
           <ul className="mt-4 flex flex-wrap gap-3">
             {article.related.map((link) => (
-              <li key={link.href}>
+              <li key={`related-${link.label}`}>
                 <Link
                   href={link.href}
                   className="inline-block rounded-md border border-mist-200 bg-white px-3 py-1.5 text-sm text-ocean-800 transition hover:border-sea-300"

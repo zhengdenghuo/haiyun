@@ -28,7 +28,7 @@ export function Header() {
             const active = isActive(item.href);
             return (
               <Link
-                key={item.href}
+                key={`desktop-nav-${item.label}`}
                 href={item.href}
                 className={`rounded-md px-2 py-1.5 text-sm transition ${
                   active
@@ -73,7 +73,7 @@ export function Header() {
           <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3">
             {navItems.map((item) => (
               <Link
-                key={item.href}
+                key={`mobile-nav-${item.label}`}
                 href={item.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-md px-3 py-2.5 text-sm ${
