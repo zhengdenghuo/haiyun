@@ -61,7 +61,7 @@ export const articles: Article[] = [
       },
     ],
     related: [
-      { href: "/estimate", label: "才數試算工具" },
+      { href: "/contact", label: "才數試算工具" },
       { href: "/pricing", label: "計費方式" },
       { href: "/articles/door-delivery", label: "送貨到府注意事項" },
     ],

@@ -3,7 +3,7 @@ import Link from "next/link";
 import { QuoteBand } from "@/components/QuoteBand";
 import { articles } from "@/lib/articles";
 import { pageMetadata } from "@/lib/seo";
-import { CM3_PER_CAI, faqs, pricingLanes, processSteps, services, site } from "@/lib/site";
+import { faqs, processSteps, services, site } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata({
   path: "/",
@@ -18,12 +18,6 @@ const quoteNeeds = [
   { title: "包裝後的長寬高與重量", desc: "不確定可先給商品尺寸與重量" },
   { title: "送貨地址與樓層", desc: "有無電梯、是否需要組裝" },
 ];
-
-const sofa = { l: 200, w: 90, h: 85 };
-const sofaCm3 = sofa.l * sofa.w * sofa.h;
-const sofaCai = (sofaCm3 / CM3_PER_CAI).toFixed(1);
-const seaLane = pricingLanes[0];
-const sofaSeaCost = Math.ceil((sofaCm3 / CM3_PER_CAI) * seaLane.perCai);
 
 export default function HomePage() {
   return (
@@ -51,7 +45,7 @@ export default function HomePage() {
                 免費估價
               </Link>
               <Link
-                href="/estimate"
+                href="/contact"
                 className="rounded-full border-2 border-char-900 px-6 py-3 text-sm font-semibold text-char-900 transition hover:bg-char-900 hover:text-white"
               >
                 先算才數
@@ -105,50 +99,6 @@ export default function HomePage() {
               </ul>
             </Link>
           ))}
-        </div>
-      </section>
-
-      <section className="bg-sand-100">
-        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 md:px-6 lg:grid-cols-2 lg:items-center">
-          <div>
-            <h2 className="heading ember-bar text-2xl text-char-950 md:text-3xl">大件怎麼計費？看「才數」</h2>
-            <p className="mt-4 leading-relaxed text-ink-soft">
-              大件家具和家電體積大、重量相對輕，所以海運主要依包裝後的體積計價。台灣常用的單位是「才」，1 才約等於 1 立方英尺。
-            </p>
-            <p className="mt-3 leading-relaxed text-ink-soft">
-              才數 ＝ 長 × 寬 × 高（公分）÷ 28,317。選擇分箱出貨的款式、去掉多餘外箱，才數就能明顯降低。
-            </p>
-            <div className="mt-6 flex flex-wrap gap-4 text-sm">
-              <Link href="/pricing" className="font-semibold text-ember-600 hover:underline">
-                看計費方式 →
-              </Link>
-              <Link href="/estimate" className="font-semibold text-ember-600 hover:underline">
-                用才數試算 →
-              </Link>
-            </div>
-          </div>
-          <div className="card rounded-2xl p-6 md:p-8">
-            <p className="text-sm text-ink-soft">範例：三人座沙發（含包裝）</p>
-            <p className="heading mt-2 text-xl text-char-950">
-              {sofa.l} × {sofa.w} × {sofa.h} 公分
-            </p>
-            <div className="mt-5 grid grid-cols-2 gap-4 border-t border-sand-200 pt-5">
-              <div>
-                <p className="text-xs text-ink-soft">才數</p>
-                <p className="heading mt-1 text-3xl text-ember-600">約 {sofaCai} 才</p>
-              </div>
-              <div>
-                <p className="text-xs text-ink-soft">立方米</p>
-                <p className="heading mt-1 text-3xl text-char-950">
-                  約 {(sofaCm3 / 1_000_000).toFixed(2)} m³
-                </p>
-              </div>
-            </div>
-            <p className="mt-5 rounded-xl bg-ember-100 px-4 py-3 text-sm text-ember-600">
-              海運家具每才 ¥{seaLane.perCai} 起，這張沙發材積運費約 ¥{sofaSeaCost.toLocaleString()} 起
-            </p>
-            <p className="mt-3 text-xs text-ink-soft">聯繫客服獲取更加優惠價格。</p>
-          </div>
         </div>
       </section>
 

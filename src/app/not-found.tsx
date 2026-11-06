@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 const shortcuts = [
   { href: "/", label: "首頁" },
   { href: "/services", label: "大件服務" },
-  { href: "/estimate", label: "才數試算" },
+  { href: "/contact", label: "才數試算" },
   { href: "/articles", label: "大件知識" },
   { href: "/contact", label: "免費估價" },
 ];

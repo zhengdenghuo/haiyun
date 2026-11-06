@@ -64,7 +64,7 @@ export default function PricingPage() {
               體積重大於實重時，計費重 ＝ 實重 ＋（體積重 − 實重）÷ 2；否則按實重計。例：實重 5 公斤、體積重 10 公斤，計費重 7.5 公斤。
             </p>
           </div>
-          <Link href="/estimate" className="text-sm font-semibold text-ember-600 hover:underline lg:col-span-2">
+          <Link href="/contact" className="text-sm font-semibold text-ember-600 hover:underline lg:col-span-2">
             用才數試算工具一次算三條線路 →
           </Link>
         </div>

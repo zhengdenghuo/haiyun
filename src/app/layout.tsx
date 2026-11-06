@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Analytics } from "@/components/Analytics";
+import { FloatingLineButton } from "@/components/FloatingLineButton";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { ogImage } from "@/lib/seo";
@@ -86,6 +88,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <FloatingLineButton />
+        <Analytics />
       </body>
     </html>
   );

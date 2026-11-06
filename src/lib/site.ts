@@ -33,7 +33,7 @@ export const footerLinks = {
   services: [
     { href: "/services", label: "大件服務" },
     { href: "/pricing", label: "計費方式" },
-    { href: "/estimate", label: "才數試算" },
+    { href: "/contact", label: "才數試算" },
     { href: "/process", label: "運送流程" },
   ],
   support: [

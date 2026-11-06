@@ -28,7 +28,7 @@ export function QuoteBand({
             {actionLabel}
           </Link>
           <Link
-            href="/estimate"
+            href="/contact"
             className="rounded-full border-2 border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
             才數試算
