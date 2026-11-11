@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { QuoteBand } from "@/components/QuoteBand";
 import { articles } from "@/lib/articles";
@@ -17,6 +18,39 @@ const quoteNeeds = [
   { title: "商品連結或照片", desc: "淘寶、天貓、京東等連結都可以" },
   { title: "包裝後的長寬高與重量", desc: "不確定可先給商品尺寸與重量" },
   { title: "送貨地址與樓層", desc: "有無電梯、是否需要組裝" },
+];
+
+const cargoPhotos = [
+  { file: "freezer-crate", name: "冷櫃", pack: "整件木架，裝櫃出貨", span: "col-span-2 row-span-2" },
+  { file: "sofa", name: "沙發", pack: "纏膜加木架" },
+  { file: "toilet", name: "智能馬桶", pack: "易碎品木架防撞" },
+  { file: "slate-table", name: "岩板桌面", pack: "立式木架固定" },
+  { file: "aquarium-batch", name: "魚缸", pack: "整批木箱" },
+  { file: "bar-counter", name: "吧台", pack: "長件整體木架", span: "col-span-2" },
+  { file: "cabinets", name: "櫃體", pack: "成批打木架" },
+  { file: "coffee-table-box", name: "茶几", pack: "封閉木箱" },
+  { file: "bathroom-vanity", name: "浴室櫃", pack: "木架加纏膜", mobileHidden: true },
+  { file: "aquarium", name: "水族箱", pack: "木架斜撐加固", mobileHidden: true },
+  { file: "office-furniture", name: "辦公家具", pack: "整板木架", mobileHidden: true },
+  { file: "display-freezer", name: "展示冷櫃", pack: "立式木架", mobileHidden: true },
+];
+
+const productPhotos = [
+  { file: "sofa-set", name: "沙發組" },
+  { file: "bed-frame", name: "床架" },
+  { file: "wardrobe", name: "組裝衣櫃" },
+  { file: "slate-dining", name: "岩板餐桌椅" },
+  { file: "tv-cabinet", name: "電視櫃、茶几" },
+  { file: "solid-wood", name: "實木家具" },
+  { file: "office", name: "辦公家具" },
+  { file: "mahjong-table", name: "麻將桌" },
+  { file: "freezer", name: "冷櫃" },
+  { file: "display-cooler", name: "冷藏展示櫃" },
+  { file: "fitness", name: "健身器材" },
+  { file: "bathroom-vanity", name: "浴室櫃組" },
+  { file: "aquarium", name: "大型魚缸", mobileHidden: true },
+  { file: "shampoo-bed", name: "洗頭床", mobileHidden: true },
+  { file: "cat-villa", name: "貓別墅", mobileHidden: true },
 ];
 
 export default function HomePage() {
@@ -78,27 +112,101 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-16 md:px-6">
-        <h2 className="heading ember-bar text-2xl text-char-950 md:text-3xl">專門處理這些大件</h2>
-        <p className="mt-3 max-w-2xl text-ink-soft">專業海運大件貨物，每一類都有對應的包裝與送貨方式。</p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
-            <Link
-              key={service.id}
-              href={`/services#${service.id}`}
-              className="card group flex flex-col rounded-2xl p-5 transition hover:border-ember-400"
-            >
-              <h3 className="heading text-lg text-char-950 group-hover:text-ember-600">{service.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{service.summary}</p>
-              <ul className="mt-4 flex flex-wrap gap-1.5">
-                {service.examples.map((example) => (
-                  <li key={example} className="rounded-md bg-sand-100 px-2 py-0.5 text-xs text-ink">
-                    {example}
-                  </li>
-                ))}
-              </ul>
+      <section className="bg-char-950 text-sand-100">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+          <div className="flex flex-wrap items-end justify-between gap-4">
+            <div className="max-w-2xl">
+              <p className="text-xs font-semibold tracking-widest text-ember-400">倉庫實拍</p>
+              <h2 className="heading mt-2 text-2xl text-white md:text-3xl">大件寄台灣，都這樣打包出貨</h2>
+              <p className="mt-3 text-sand-300">
+                以下都是倉庫實際打包、裝車的照片。易碎、怕撞的大件會先加木架或木箱，再上櫃海運到台灣。
+              </p>
+            </div>
+            <Link href="/contact" className="text-sm font-semibold text-ember-400 hover:underline">
+              傳尺寸，免費估價 →
             </Link>
-          ))}
+          </div>
+
+          <ul className="mt-10 grid auto-rows-[150px] grid-flow-dense grid-cols-2 gap-3 sm:auto-rows-[190px] md:grid-cols-4 md:auto-rows-[210px] md:gap-4">
+            {cargoPhotos.map((photo, index) => (
+              <li
+                key={photo.file}
+                className={`group relative overflow-hidden rounded-2xl bg-char-900 ${photo.span ?? ""} ${
+                  photo.mobileHidden ? "hidden md:block" : ""
+                }`}
+              >
+                <Image
+                  src={`${site.basePath}/cargo/${photo.file}.jpg`}
+                  alt={`${photo.name}寄台灣實拍：${photo.pack}`}
+                  fill
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                  loading={index === 0 ? "eager" : "lazy"}
+                  className="object-cover transition duration-500 group-hover:scale-105"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/40 to-transparent px-3 pt-10 pb-3 md:px-4">
+                  <p className={`heading text-white ${index === 0 ? "text-xl md:text-2xl" : "text-sm md:text-base"}`}>
+                    {photo.name}
+                  </p>
+                  <p className={`text-sand-200 ${index === 0 ? "mt-1 text-sm" : "text-xs"}`}>{photo.pack}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section className="border-b border-sand-200">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6">
+          <h2 className="heading ember-bar text-2xl text-char-950 md:text-3xl">專門處理這些大件</h2>
+          <p className="mt-3 max-w-2xl text-ink-soft">專業海運大件貨物，每一類都有對應的包裝與送貨方式。</p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {services.map((service) => (
+              <Link
+                key={service.id}
+                href={`/services#${service.id}`}
+                className="card group flex flex-col rounded-2xl p-5 transition hover:border-ember-400"
+              >
+                <h3 className="heading text-lg text-char-950 group-hover:text-ember-600">{service.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{service.summary}</p>
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {service.examples.map((example) => (
+                    <li key={example} className="rounded-md bg-sand-100 px-2 py-0.5 text-xs text-ink">
+                      {example}
+                    </li>
+                  ))}
+                </ul>
+              </Link>
+            ))}
+          </div>
+
+          <div className="mt-14 flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h3 className="heading text-xl text-char-950">常寄品項</h3>
+              <p className="mt-1 text-sm text-ink-soft">淘寶買的這些大件，都能寄台灣。沒看到的品項也可以先問客服。</p>
+            </div>
+            <Link href="/contact" className="text-sm font-semibold text-ember-600 hover:underline">
+              問我的商品能不能寄 →
+            </Link>
+          </div>
+          <ul className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 md:gap-4 lg:grid-cols-5">
+            {productPhotos.map((product) => (
+              <li
+                key={product.file}
+                className={`card group overflow-hidden rounded-2xl ${product.mobileHidden ? "hidden sm:block" : ""}`}
+              >
+                <div className="relative aspect-[4/3] overflow-hidden bg-white">
+                  <Image
+                    src={`${site.basePath}/products/${product.file}.jpg`}
+                    alt={`${product.name}寄台灣`}
+                    fill
+                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                </div>
+                <p className="px-3 py-2.5 text-center text-sm font-semibold text-char-950">{product.name}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

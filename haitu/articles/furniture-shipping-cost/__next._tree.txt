@@ -1,5 +1,5 @@
-:HL["/_next/static/chunks/170nqf-a1wyhj.css","style"]
+:HL["/_next/static/chunks/3dg0jjt6mefri.css","style"]
 3:[["children",{"s":"__PAGE__","h":160}]]
 2:[["children",{"s":{"n":"slug","t":"d","k":"furniture-shipping-cost","s":[]},"h":65632,"c":"$Q3"}]]
 1:[["children",{"s":"articles","h":131136,"c":"$Q2"}]]
-0:{"b":"6IF2zdSpJdm3DS-wb8DQ3","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
+0:{"b":"nKC9duBS0hBwbqh6lMTPB","t":{"t":{"s":"","h":131088,"c":"$Q1"}}}
