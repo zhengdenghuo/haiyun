@@ -6,9 +6,9 @@ import { trackEvent } from "@/lib/analytics";
 import { CM3_PER_CAI, VOLUME_DIVISOR, halfVolumeWeight, site } from "@/lib/site";
 
 const lanes = [
-  { id: "sea", label: "台灣海運 · 家具", perKg: 4.5, perCai: 25 },
-  { id: "sea-fast", label: "台灣海快（不包稅）", perKg: 10, perCai: 0 },
-  { id: "air", label: "台灣空運 · 普貨", perKg: 25, perCai: 0 },
+  { id: "sea", label: "台灣海運 · 家具", perKg: 3, perCai: 25 },
+  { id: "sea-fast", label: "台灣海快（不包稅）", perKg: 6, perCai: 0 },
+  { id: "air", label: "台灣空運 · 普貨", perKg: 15, perCai: 0 },
 ] as const;
 
 export function EstimateTool() {

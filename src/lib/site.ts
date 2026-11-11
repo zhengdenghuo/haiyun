@@ -108,21 +108,21 @@ export const processSteps = [
 export const pricingRows = [
   {
     lane: "台灣海運 · 家具",
-    unit: "¥4.5 / kg 起",
+    unit: "¥3 / kg 起",
     volume: "¥25 / 材 起",
     eta: "約 10–12 工作日",
     note: "按重量與材積較高者計費；含基礎合箱，偏遠地區另計",
   },
   {
     lane: "台灣海快（不包稅）",
-    unit: "¥10 / kg 起",
+    unit: "¥6 / kg 起",
     volume: "按半拋計算",
     eta: "約 3–6 工作日",
     note: "不含稅費，如需繳稅由收件人依台灣海關規定繳納",
   },
   {
     lane: "台灣空運 · 普貨",
-    unit: "¥25 / kg 起",
+    unit: "¥15 / kg 起",
     volume: "按半拋計算",
     eta: "約 2–4 工作日",
     note: "輕小件更划算；特貨需審核",

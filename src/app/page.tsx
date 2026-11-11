@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { CtaBanner } from "@/components/CtaBanner";
 import { articles } from "@/lib/articles";
@@ -9,7 +10,7 @@ export const metadata: Metadata = pageMetadata({
   path: "/",
   title: `大陸寄台灣集運｜淘寶海運・海快專線｜${site.name}`,
   description:
-    "鯨魚海運專營大陸寄台灣集運：淘寶、拼多多包裹合箱，海快約 3–6 個工作日，海運家具 ¥4.5/kg 起，東莞虎門倉收貨。",
+    "鯨魚海運專營大陸寄台灣集運：淘寶、拼多多包裹合箱，海快約 3–6 個工作日，海運家具 ¥3/kg 起，東莞虎門倉收貨。",
   absoluteTitle: true,
 });
 
@@ -19,10 +20,19 @@ const heroHighlights = [
   { title: "專人跟進", desc: "電話、微信、LINE 都能聯繫" },
 ];
 
+const packingPhotos = [
+  { file: "freezer-crate", name: "冷櫃", pack: "整件木架" },
+  { file: "sofa", name: "沙發", pack: "纏膜加木架" },
+  { file: "toilet", name: "智能馬桶", pack: "易碎品木架防撞" },
+  { file: "slate-table", name: "岩板桌面", pack: "立式木架固定" },
+  { file: "coffee-table-box", name: "茶几", pack: "封閉木箱" },
+  { file: "bar-counter", name: "吧台", pack: "長件整體木架" },
+];
+
 const faqs = [
   {
     q: "大陸寄台灣的運費怎麼算？",
-    a: "海運家具按重量與材積兩者中較高者計費，參考價 ¥4.5/kg 起、¥25/材 起；海快與空運按「半拋」計算，參考價分別為 ¥10/kg 起與 ¥25/kg 起。實際費用以倉庫測量後的計價重與客服報價為準。",
+    a: "海運家具按重量與材積兩者中較高者計費，參考價 ¥3/kg 起、¥25/材 起；海快與空運按「半拋」計算，參考價分別為 ¥6/kg 起與 ¥15/kg 起。實際費用以倉庫測量後的計價重與客服報價為準。",
   },
   {
     q: "集運到台灣要多久？",
@@ -138,6 +148,31 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="mx-auto max-w-6xl px-4 pt-16 md:px-6 md:pt-20">
+        <SectionHeading
+          eyebrow="倉庫實拍"
+          title="大件寄台灣，倉庫這樣打包"
+          description="大件會依材質加木架、木箱或纏膜，打包後的外箱尺寸就是計算材數的依據。"
+        />
+        <ul className="mt-10 grid grid-cols-2 gap-3 md:grid-cols-3 md:gap-4">
+          {packingPhotos.map((photo) => (
+            <li key={photo.file} className="group relative aspect-[4/3] overflow-hidden rounded-2xl bg-ocean-900">
+              <Image
+                src={`${site.basePath}/cargo/${photo.file}.jpg`}
+                alt={`${photo.name}寄台灣打包實拍：${photo.pack}`}
+                fill
+                sizes="(min-width: 768px) 33vw, 50vw"
+                className="object-cover transition duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/80 via-black/40 to-transparent px-3 pt-10 pb-3">
+                <p className="text-sm font-semibold text-white md:text-base">{photo.name}</p>
+                <p className="text-xs text-foam/80">{photo.pack}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-20">
         <SectionHeading
           eyebrow="服務線路"
@@ -148,7 +183,7 @@ export default function HomePage() {
           <article className="border-l-2 border-sea-400/70 pl-5">
             <h3 className="font-display text-xl text-ocean-900">家具寄台灣</h3>
             <p className="mt-2 text-sm leading-relaxed text-ink-muted">
-              沙發、床架、餐桌走海運，按重量與材積較高者計費，¥4.5/kg 起。
+              沙發、床架、餐桌走海運，按重量與材積較高者計費，¥3/kg 起。
             </p>
             <Link
               href="/articles/furniture-shipping-to-taiwan"

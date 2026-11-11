@@ -72,7 +72,7 @@ export default function PricingPage() {
       <section className="mx-auto max-w-6xl px-4 py-14 md:px-6">
         <h2 className="font-display text-3xl text-ocean-900">計費規則摘要</h2>
         <ul className="mt-6 max-w-3xl space-y-3 text-ink-muted">
-          <li>· 海運家具：重量運費（每公斤 ¥4.5 起）與材積運費（每材 ¥25 起）取較高者；材數 ＝ 長 × 寬 × 高（cm）÷ 28,317。</li>
+          <li>· 海運家具：重量運費（每公斤 ¥3 起）與材積運費（每材 ¥25 起）取較高者；材數 ＝ 長 × 寬 × 高（cm）÷ 28,317。</li>
           <li>· 海快、空運按半拋計算：體積重（kg）＝ 長 × 寬 × 高（cm）÷ 6000；體積重大於實重時，計費重 ＝ 實重 ＋（體積重 − 實重）÷ 2，否則按實重計。</li>
           <li>· 單票有最低計費重，不足按最低重計；超長、超重另計附加費。</li>
           <li>· 偏遠地區、外島、特殊地址可能產生派送附加，下單前可諮詢客服。</li>
