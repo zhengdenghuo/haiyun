@@ -5,6 +5,8 @@ type QuoteBandProps = {
   text: string;
   actionHref?: string;
   actionLabel?: string;
+  secondaryHref?: string;
+  secondaryLabel?: string;
 };
 
 export function QuoteBand({
@@ -12,6 +14,8 @@ export function QuoteBand({
   text,
   actionHref = "/contact",
   actionLabel = "傳尺寸，免費估價",
+  secondaryHref = "/contact",
+  secondaryLabel = "才數試算",
 }: QuoteBandProps) {
   return (
     <section className="bg-ember-500 text-white">
@@ -28,10 +32,10 @@ export function QuoteBand({
             {actionLabel}
           </Link>
           <Link
-            href="/contact"
+            href={secondaryHref}
             className="rounded-full border-2 border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
           >
-            才數試算
+            {secondaryLabel}
           </Link>
         </div>
       </div>

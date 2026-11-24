@@ -8,6 +8,8 @@ import { navItems, site } from "@/lib/site";
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const contactHref = pathname === "/" ? site.line : "/contact";
+  const contactLabel = pathname === "/" ? "LINE 諮詢" : "聯絡我們";
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
@@ -33,24 +35,24 @@ export function Header() {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={item.href === "/contact" ? contactHref : item.href}
                 className={`border-b-2 px-2.5 py-2 text-sm transition ${
                   isActive(item.href)
                     ? "border-ember-500 font-semibold text-char-950"
                     : "border-transparent text-ink-soft hover:text-char-950"
                 }`}
               >
-                {item.label}
+                {item.href === "/contact" ? contactLabel : item.label}
               </Link>
             ))}
           </nav>
 
           <div className="flex items-center gap-2">
             <Link
-              href="/contact"
+              href={contactHref}
               className="hidden rounded-full bg-ember-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-ember-600 sm:inline-flex"
             >
-              免費估價
+              {pathname === "/" ? "LINE 免費估價" : "免費估價"}
             </Link>
             <button
               type="button"
@@ -77,13 +79,13 @@ export function Header() {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                href={item.href === "/contact" ? contactHref : item.href}
                 onClick={() => setOpen(false)}
                 className={`rounded-lg px-3 py-2.5 text-sm ${
                   isActive(item.href) ? "bg-ember-100 font-semibold text-ember-600" : "text-ink"
                 }`}
               >
-                {item.label}
+                {item.href === "/contact" ? contactLabel : item.label}
               </Link>
             ))}
           </div>

@@ -41,7 +41,7 @@ const businessJsonLd = {
   image: `${site.url}${ogImage.url}`,
   description: "家具、家電與建材等大件貨物寄台灣的海運集運服務。",
   areaServed: "TW",
-  openingHours: "Mo-Sa 09:00-20:00",
+  openingHours: "Mo-Su 09:00-20:00",
   ...(site.phone ? { telephone: site.phone } : {}),
   ...(site.email ? { email: site.email } : {}),
   ...(site.line ? { sameAs: [site.line] } : {}),

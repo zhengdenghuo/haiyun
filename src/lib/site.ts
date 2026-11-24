@@ -7,7 +7,7 @@ export const site = {
   englishName: "Haitu Freight",
   tagline: "大件寄台灣，整件送到家",
   phone: "",
-  hours: "週一至週六 9:00–20:00",
+  hours: "週一至週日 9:00–20:00",
   email: "",
   wechat: "",
   line: "https://line.me/R/ti/p/@785iicjj",

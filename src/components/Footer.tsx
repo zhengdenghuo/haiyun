@@ -1,8 +1,13 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { LineAddFriendButton } from "@/components/LineAddFriendButton";
 import { footerLinks, site } from "@/lib/site";
 
 export function Footer() {
+  const onHome = usePathname() === "/";
+  const contactHref = onHome ? site.line : "/contact";
   const contacts = [
     site.phone && { label: "電話", value: site.phone, href: `tel:${site.phone}` },
     site.line && { label: "LINE", value: "加入好友", href: site.line },
@@ -31,10 +36,10 @@ export function Footer() {
               </dl>
             ) : (
               <Link
-                href="/contact"
+                href={contactHref}
                 className="mt-5 inline-flex rounded-full bg-ember-500 px-4 py-2 text-sm font-semibold text-white hover:bg-ember-600"
               >
-                線上留言估價
+                {onHome ? "LINE 免費估價" : "線上留言估價"}
               </Link>
             )}
             <div className="mt-4">
@@ -68,9 +73,9 @@ export function Footer() {
           </div>
 
           <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-            <FooterColumn title="服務" links={footerLinks.services} />
-            <FooterColumn title="寄送資訊" links={footerLinks.support} />
-            <FooterColumn title="關於" links={footerLinks.company} />
+            <FooterColumn title="服務" links={footerLinks.services} onHome={onHome} />
+            <FooterColumn title="寄送資訊" links={footerLinks.support} onHome={onHome} />
+            <FooterColumn title="關於" links={footerLinks.company} onHome={onHome} />
           </div>
         </div>
       </div>
@@ -99,21 +104,30 @@ export function Footer() {
 function FooterColumn({
   title,
   links,
+  onHome,
 }: {
   title: string;
   links: readonly { href: string; label: string }[];
+  onHome: boolean;
 }) {
   return (
     <div>
       <p className="text-xs font-semibold tracking-widest text-ember-400">{title}</p>
       <ul className="mt-3 space-y-2">
-        {links.map((link) => (
-          <li key={link.href + link.label}>
-            <Link href={link.href} className="text-sm text-sand-200 hover:text-white">
-              {link.label}
-            </Link>
-          </li>
-        ))}
+        {links.map((link) => {
+          const opensLine = onHome && link.href === "/contact";
+          const label = link.label === "才數試算" ? "LINE 詢問才數" : "LINE 諮詢";
+          return (
+            <li key={link.label}>
+              <Link
+                href={opensLine ? site.line : link.href}
+                className="text-sm text-sand-200 hover:text-white"
+              >
+                {opensLine ? label : link.label}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </div>
   );
