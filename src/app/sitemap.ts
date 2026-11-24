@@ -14,7 +14,6 @@ const routes: { path: string; priority: number }[] = [
   { path: "/articles/", priority: 0.8 },
   { path: "/guide/", priority: 0.7 },
   { path: "/contact/", priority: 0.7 },
-  { path: "/about/", priority: 0.5 },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -27,7 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
   const posts: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${site.url}/articles/${article.slug}/`,
-    lastModified: new Date(article.publishedAt),
+    lastModified: new Date(article.updatedAt ?? article.publishedAt),
     changeFrequency: "monthly",
     priority: 0.7,
   }));

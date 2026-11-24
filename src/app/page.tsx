@@ -62,7 +62,7 @@ const faqJsonLd = {
 const featuredArticles = articles.filter((article) =>
   [
     "furniture-shipping-to-taiwan",
-    "appliance-shipping-to-taiwan",
+    "taobao-furniture-packing",
     "oversized-equipment-shipping",
   ].includes(article.slug),
 );
@@ -197,12 +197,6 @@ export default function HomePage() {
             <p className="mt-2 text-sm leading-relaxed text-ink-muted">
               冰箱、洗衣機等大件先確認能否收寄，再選海運或海快。
             </p>
-            <Link
-              href="/articles/appliance-shipping-to-taiwan"
-              className="mt-3 inline-block text-sm font-medium text-sea-500 hover:underline"
-            >
-              看家電集運須知 →
-            </Link>
           </article>
         </div>
         <div className="mt-10 grid gap-8 md:grid-cols-2">
@@ -260,12 +254,6 @@ export default function HomePage() {
               {site.name}
               紮根珠三角倉配網絡，面向台灣、港澳及東南亞提供集運合箱與專線幹線，其中家具、家電與大型設備等大件貨物尤其擅長。我們強調計費透明、節點可查與人工跟進，讓個人買家與店鋪補貨都能安心託付。
             </p>
-            <Link
-              href="/about"
-              className="mt-6 inline-flex rounded-md bg-ocean-800 px-4 py-2.5 text-sm text-foam transition hover:bg-ocean-700"
-            >
-              了解品牌故事
-            </Link>
           </div>
           <dl className="grid grid-cols-2 gap-4">
             {aboutStats.map((stat) => (

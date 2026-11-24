@@ -24,7 +24,6 @@ export const navItems = [
   { href: "/warehouse", label: "收貨倉庫" },
   { href: "/guide", label: "集運須知" },
   { href: "/articles", label: "集運知識" },
-  { href: "/about", label: "關於鯨魚" },
   { href: "/contact", label: "聯繫我們" },
 ] as const;
 
@@ -43,8 +42,6 @@ export const footerLinks = {
     { href: "/contact", label: "在線諮詢" },
   ],
   company: [
-    { href: "/about", label: "關於鯨魚" },
-    { href: "/about#promise", label: "服務承諾" },
     { href: "/contact", label: "聯繫方式" },
   ],
 };

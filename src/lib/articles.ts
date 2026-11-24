@@ -1,5 +1,6 @@
 export type ArticleSection = {
   heading: string;
+  photo?: { src: string; alt: string; caption: string; width: number; height: number };
   paragraphs?: string[];
   list?: string[];
   ordered?: boolean;
@@ -11,11 +12,12 @@ export type Article = {
   description: string;
   excerpt: string;
   publishedAt: string;
+  updatedAt?: string;
   sections: ArticleSection[];
   related: { href: string; label: string }[];
 };
 
-export const articles: Article[] = [
+const articleDraftsAndPublished: Article[] = [
   {
     slug: "taobao-consolidation-guide",
     title: "淘寶集運教學：大陸寄台灣 6 步驟、運費與時效",
@@ -310,7 +312,6 @@ export const articles: Article[] = [
       },
     ],
     related: [
-      { href: "/articles/customs-declaration-fields", label: "集運申報品名怎麼填？如實申報與常見錯誤" },
       { href: "/articles/prohibited-items", label: "集運違禁品有哪些？鋰電池、液體、食品能不能寄" },
       { href: "/articles/taobao-consolidation-guide", label: "淘寶集運怎麼寄到台灣？新手 6 步驟完整教學" },
     ],
@@ -384,12 +385,20 @@ export const articles: Article[] = [
   },
   {
     slug: "shipping-time-to-taiwan",
-    title: "大陸寄台灣要多久？海運、海快、空運時效完整比較",
+    title: "大陸寄台灣要多久？海快、海運、空運時效比較",
     description:
-      "大陸寄台灣要多久？比較海運約 10–12 個工作日、海快約 3–6 個工作日、空運約 2–4 個工作日的參考時效，說明時效從何時起算與常見的延誤因素。",
-    excerpt: "三種線路的參考時效，以及從入庫到簽收會遇到的時間變數。",
+      "海快多久到台灣？大陸倉出庫後，海快幹線約 3–6 個工作日，家具海運約 10–12 天、普貨空運約 2–4 天，皆以工作日計。看懂清關、派送與從下單到簽收的時間怎麼抓。",
+    excerpt: "海快從大陸倉出庫後，幹線約 3–6 個工作日。下單到簽收，還要預留寄倉、清關與派送時間。",
     publishedAt: "2026-10-20",
+    updatedAt: "2026-11-24",
     sections: [
+      {
+        heading: "海快多久到台灣？出庫後約 3–6 個工作日",
+        paragraphs: [
+          "時效從包裹到齊、合箱完成並由大陸倉實際出庫後起算。海快約 3–6 個工作日是幹線運輸的參考時效，下單到寄倉、等包裹到齊和合箱的時間要另算。",
+          "估算收到貨的日期時，請再為清關與台灣末端派送預留時間。清關放行後才能派送，海關抽驗或偏遠地區配送可能延後簽收。急用件可在出庫前向客服確認當期班次與送達地區的預估時間。",
+        ],
+      },
       {
         heading: "三種線路的參考時效",
         list: [
@@ -398,7 +407,7 @@ export const articles: Article[] = [
           "台灣空運（普貨）：約 2–4 個工作日，適合輕小、急用的商品。",
         ],
         paragraphs: [
-          "以上為出庫後的運輸參考時效，不含包裹在大陸境內到倉的等待時間，也不含海關查驗的額外天數。",
+          "以上皆為出庫後的幹線運輸參考時效，以工作日計算。",
         ],
       },
       {
@@ -440,7 +449,7 @@ export const articles: Article[] = [
         heading: "實例：海快與海運的到貨時程推演",
         paragraphs: [
           "舉例在週一於淘寶下單，商品從廣州出貨，大陸境內快遞約 2 天到倉，週三入庫。若同批貨已到齊，當天申請合箱、週四付款出庫，時效就從週四這天開始算，而不是從下單日起算。",
-          "同一批貨走海快，參考時效約 3–6 個工作日，順利的話下週二到下週五之間清關派送，從下單到簽收大約一週多；若改走海運，參考時效約 10–12 個工作日，這批貨大約要兩到三週才會到府。",
+          "從週四出庫起，海快先抓 3–6 個工作日的幹線時間，家具海運則抓 10–12 個工作日。要估算到府日，還要看清關放行和當地配送排程。",
           "如果期間被海關抽驗，或碰上雙 11、春節前後的艙位與艙期緊張，還要再多抓幾天。因此有明確到貨日時，空運抓約一週、海快抓約兩週、海運抓約三週會比較安心。",
         ],
       },
@@ -453,11 +462,12 @@ export const articles: Article[] = [
   },
   {
     slug: "furniture-shipping-to-taiwan",
-    title: "大陸家具寄台灣怎麼寄？沙發、床架、餐桌運送指南",
+    title: "淘寶家具寄台灣運費怎麼算？沙發、床架、餐桌海運指南",
     description:
-      "大陸買的沙發、床架、餐桌怎麼寄台灣？說明家具集運走海運的流程、按才計價方式、打木架與加固建議，以及到府配送與自行組裝的安排與費用。",
-    excerpt: "家具走海運的流程、計價與包裝重點，沙發床架都能安心運。",
+      "淘寶家具寄台灣運費怎麼算？用沙發走海運的試算看懂按材與按公斤取高，附鯨魚海運倉庫打包實拍，並說明木架、到府配送與上樓費用怎麼確認。",
+    excerpt: "沙發、床架、餐桌從大陸寄台灣，先量包裝尺寸和實重，再確認木架與到府條件。",
     publishedAt: "2026-10-20",
+    updatedAt: "2026-11-24",
     sections: [
       {
         heading: "為什麼家具通常走海運",
@@ -466,10 +476,25 @@ export const articles: Article[] = [
         ],
       },
       {
-        heading: "按材計價怎麼算",
+        heading: "淘寶家具寄台灣運費怎麼算？",
         paragraphs: [
-          "海運家具以「材」計算體積，1 材約 28,317 立方公分（約 1 立方英尺）。做法是把長 × 寬 × 高（公分）相乘後換算成材數，再乘上每材單價。",
-          "舉例：一張組裝前約 200 × 90 × 30 公分的沙發，體積 540,000 立方公分，約 19 材。實際仍以倉庫測量的外箱尺寸為準，拆解包裝、去掉多餘填充物能有效降低材數。",
+          "家具海運會分別計算按重量和按體積的運費，再取兩個金額中較高的。按重量是實重 × 每公斤單價。按體積是把包裝後的長 × 寬 × 高（公分）除以 28,317 換成材數，再乘以每材單價。",
+        ],
+      },
+      {
+        heading: "沙發寄台灣：倉庫打包實拍與運費試算",
+        photo: {
+          src: "/cargo/sofa.jpg",
+          alt: "鯨魚海運倉庫的沙發打包實拍，外層纏膜並加木架",
+          caption: "鯨魚海運倉庫沙發打包實拍。下列尺寸、重量與金額為試算範例。",
+          width: 1200,
+          height: 900,
+        },
+        list: [
+          "假設沙發打包後長 200、寬 90、高 30 公分，實重 50 公斤。外包裝約 19.07 材。",
+          "以參考起價試算，按材約 ¥477（19.07 材 × ¥25），按實重約 ¥150（50 公斤 × ¥3）。此例取較高的約 ¥477 作為基本運費。",
+          "加固包裝參考 ¥8／件起，木架依尺寸與用料報價。外架加上後要以最外緣重測，超長件、偏遠配送或上樓搬運請另外詢價。",
+          "詢價時提供商品連結、件數、包裝尺寸、重量、台灣配送縣市、樓層及有無電梯，並確認送到一樓或需要上樓。",
         ],
       },
       {
@@ -498,7 +523,7 @@ export const articles: Article[] = [
       {
         heading: "常見情境試算：實木餐桌走海運",
         paragraphs: [
-          "舉例一張實木餐桌，外箱 200 × 100 × 15 公分、實重 45 公斤。材積重 ＝ 200 × 100 × 15 ÷ 6000 ＝ 50 公斤，比實重 45 公斤高，海運按重量與材積兩者中較高者計費。",
+          "舉例一張實木餐桌，外箱 200 × 100 × 15 公分、實重 45 公斤。家具海運分別按實重和材數試算，取較高的運費。",
           "按重量計：45 × 約 ¥3 / kg 起 ≈ ¥135 起；按材積計：外箱體積 200 × 100 × 15 ＝ 300,000 立方公分，約 10.6 材（300,000 ÷ 28,317 ≈ 10.6），乘上約 ¥25 / 材 起約 ¥265 起，兩者取高者，約 ¥265 起。若請賣家拆桌腳、把外箱壓縮到 150 × 100 × 15 公分，體積降到 225,000 立方公分、約 7.9 材，運費就有機會降下來。",
           "這件的最長邊 200 公分，已明顯超過一般標準，需按最長邊另外計費；若再加木架加固（約 ¥8 / 件起），木架本身的體積與重量也會一併計入。整體走海運的參考時效約 10–12 個工作日。",
         ],
@@ -567,7 +592,6 @@ export const articles: Article[] = [
     ],
     related: [
       { href: "/articles/furniture-shipping-to-taiwan", label: "大陸家具寄台灣怎麼寄？沙發、床架、餐桌運送指南" },
-      { href: "/articles/appliance-shipping-to-taiwan", label: "冰箱、洗衣機能寄台灣嗎？大型家電集運須知" },
       { href: "/articles/fragile-item-packing", label: "易碎品寄台灣怎麼包？陶瓷、玻璃、燈具加固技巧" },
     ],
   },
@@ -681,8 +705,6 @@ export const articles: Article[] = [
     ],
     related: [
       { href: "/articles/prohibited-items", label: "集運違禁品有哪些？鋰電池、液體、食品能不能寄" },
-      { href: "/articles/customs-declaration-fields", label: "集運申報品名怎麼填？如實申報與常見錯誤" },
-      { href: "/articles/appliance-shipping-to-taiwan", label: "冰箱、洗衣機能寄台灣嗎？大型家電集運須知" },
     ],
   },
   {
@@ -1176,7 +1198,6 @@ export const articles: Article[] = [
       },
     ],
     related: [
-      { href: "/articles/appliance-shipping-to-taiwan", label: "冰箱、洗衣機能寄台灣嗎？大型家電集運須知" },
       { href: "/articles/moving-to-taiwan-by-sea", label: "搬家寄台灣：行李、傢俱與大型物件怎麼運" },
       { href: "/articles/shipping-fee-calculation", label: "集運運費怎麼算？實重、材積重與「才」一次看懂" },
     ],
@@ -1242,6 +1263,15 @@ export const articles: Article[] = [
   },
 ];
 
+const unpublishedArticleSlugs = new Set([
+  "appliance-shipping-to-taiwan",
+  "customs-declaration-fields",
+]);
+
+export const articles = articleDraftsAndPublished.filter(
+  (article) => !unpublishedArticleSlugs.has(article.slug),
+);
+
 export const articleGroups: { title: string; description: string; slugs: string[] }[] = [
   {
     title: "集運入門與線路選擇",
@@ -1268,7 +1298,6 @@ export const articleGroups: { title: string; description: string; slugs: string[
     slugs: [
       "furniture-shipping-to-taiwan",
       "taobao-furniture-packing",
-      "appliance-shipping-to-taiwan",
       "oversized-equipment-shipping",
       "moving-to-taiwan-by-sea",
     ],
@@ -1281,7 +1310,6 @@ export const articleGroups: { title: string; description: string; slugs: string[
       "lithium-battery-shipping",
       "sensitive-goods-guide",
       "customs-tax-ezway",
-      "customs-declaration-fields",
     ],
   },
   {

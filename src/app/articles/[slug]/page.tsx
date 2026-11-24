@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CtaBanner } from "@/components/CtaBanner";
@@ -26,7 +27,12 @@ export async function generateMetadata({
   });
   return {
     ...base,
-    openGraph: { ...base.openGraph, type: "article", publishedTime: article.publishedAt },
+    openGraph: {
+      ...base.openGraph,
+      type: "article",
+      publishedTime: article.publishedAt,
+      modifiedTime: article.updatedAt ?? article.publishedAt,
+    },
   };
 }
 
@@ -51,7 +57,7 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
         description: article.description,
         image: `${site.url}${ogImage.url}`,
         datePublished: article.publishedAt,
-        dateModified: article.publishedAt,
+        dateModified: article.updatedAt ?? article.publishedAt,
         inLanguage: "zh-TW",
         mainEntityOfPage: url,
         author: organization,
@@ -68,6 +74,7 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
     ],
   };
   const others = articles.filter((item) => item.slug !== article.slug).slice(0, 3);
+  const isFurnitureGuide = article.slug === "furniture-shipping-to-taiwan";
 
   return (
     <>
@@ -90,6 +97,11 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
         <time dateTime={article.publishedAt} className="mt-2 block text-xs text-ink-muted">
           發布日期：{article.publishedAt}
         </time>
+        {article.updatedAt ? (
+          <time dateTime={article.updatedAt} className="mt-1 block text-xs text-ink-muted">
+            更新日期：{article.updatedAt}
+          </time>
+        ) : null}
 
         <div className="mt-10 space-y-12">
           {article.sections.map((section) => {
@@ -97,6 +109,20 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
             return (
               <section key={section.heading}>
                 <h2 className="font-display text-2xl text-ocean-900 md:text-3xl">{section.heading}</h2>
+                {section.photo ? (
+                  <figure className="mt-4">
+                    <Image
+                      src={`${site.basePath}${section.photo.src}`}
+                      alt={section.photo.alt}
+                      width={section.photo.width}
+                      height={section.photo.height}
+                      className="h-auto w-full rounded-xl"
+                    />
+                    <figcaption className="mt-2 text-sm text-ink-muted">
+                      {section.photo.caption}
+                    </figcaption>
+                  </figure>
+                ) : null}
                 {section.paragraphs?.map((text) => (
                   <p key={text} className="mt-4 leading-relaxed text-ink-muted">
                     {text}
@@ -148,10 +174,19 @@ export default async function ArticlePage({ params }: PageProps<"/articles/[slug
         </section>
       </article>
 
-      <CtaBanner
-        title="還有其他問題？"
-        description="把商品連結、重量尺寸或目的地發給客服，我們會直接幫你評估。"
-      />
+      {isFurnitureGuide ? (
+        <CtaBanner
+          title="家具寄台灣，先用 LINE 問運費"
+          description="把商品連結、包裝尺寸、重量與配送縣市交給客服，先確認海運、木架和到府搬運費用。"
+          primaryHref={site.line}
+          primaryLabel="LINE 詢價"
+        />
+      ) : (
+        <CtaBanner
+          title="還有其他問題？"
+          description="把商品連結、重量尺寸或目的地發給客服，我們會直接幫你評估。"
+        />
+      )}
     </>
   );
 }
